@@ -26,14 +26,14 @@ export default async function Home() {
 
 const pageContent = (
   <div className="flex flex-col gap-10">
-    <div className="flex flex-row justify-center p-10 h-96 bg-slate-300">
-      <div className="flex flex-col gap-6 w-2/4 text-center p-10">
+    <div className="flex flex-row justify-center p-10">
+      <div className="flex flex-col gap-6 w-3/4 text-center p-10">
         <div className="flex flex-col gap-4">
-          <h1 className="text-3xl">ONE PLATFORM TO MANAGE ALL OF YOUR IN-STORE OPERATIONS</h1>
-          <p>Designed to help hospitality businesses like yours control costs & increase profitability.</p>
+          <h1 className="text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">ONE PLATFORM TO MANAGE ALL OF YOUR IN-STORE OPERATIONS</h1>
+          <p className="text-4xl font-medium">Designed to help hospitality businesses like yours control costs & increase profitability.</p>
         </div>
         <div className="flex flex-row gap-4 justify-center">
-          <Link className="btn btn-primary" href={'/'}>Chat with us!</Link>
+          <Link className="btn btn-primary " href={'/'}>Chat with us!</Link>
           <Link className="btn btn-outline btn-primary" href={'/'}>Request a demo</Link>
         </div>
       </div>

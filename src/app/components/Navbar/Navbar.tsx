@@ -1,6 +1,8 @@
 import Link from "next/link"
 import SigninButton from "./SigninButton"
 import ThemeController from "./ThemeController"
+import Image from "next/image"
+import logo from "@app/assets/svg/Logo.svg"
 
 export default function Navbar() {
     return (
@@ -16,7 +18,10 @@ export default function Navbar() {
                             <li><Link href="/contact-us">Contact</Link></li>
                         </ul>
                     </div>
-                    <Link href="/" className="btn btn-ghost text-xl">The Crunch App</Link>
+                    <Link href="/" className="px-6">
+                        <Image src={logo} className="h-10" alt="logo" />
+                    </Link>
+
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
