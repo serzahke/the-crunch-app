@@ -24,7 +24,7 @@ export default function RootLayout({
           <ThemeProvider>
             <ClientThemeWrapper>
               <Navbar />
-              <main className="p-6">
+              <main className="p-6" style={{minHeight: '100vh'}}>
                 {children}
               </main>
             </ClientThemeWrapper>
