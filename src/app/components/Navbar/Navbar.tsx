@@ -24,7 +24,7 @@ export default function Navbar() {
                         <li><Link href="/contact-us">Contact</Link></li>
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end flex flex-row gap-10">
                     <ThemeController />
                     <SigninButton />
                 </div>
