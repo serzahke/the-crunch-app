@@ -26,7 +26,7 @@ const SigninButton = () => {
                             Dashboard
                         </Link>
                     </li>
-                    <button className='btn btn-ghost text-red-500' onClick={() => signOut()} >
+                    <button className='btn btn-ghost text-red-500 hover:bg-red-50' onClick={() => signOut()} >
                         <ArrowLeftOnRectangleIcon className='w-4 h-4 text-red-400' />
                         Sign out
                     </button>
