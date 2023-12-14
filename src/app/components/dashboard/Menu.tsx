@@ -21,42 +21,42 @@ const Menu = ({ userCard }: any) => {
             <ul className="menu bg-base-200 w-56 rounded-box">
                 <li>
                     <Link href={'/dashboard'}>
-                        <RectangleGroupIcon className='h-4 w-4 text-black' />
+                        <RectangleGroupIcon className='h-4 w-4' />
                         Dashboard
                     </Link>
                 </li>
                 <li>
                     <Link href={'/dashboard/ops-benchmarks'}>
-                        <ChartBarIcon className='h-4 w-4 text-black' />
+                        <ChartBarIcon className='h-4 w-4' />
                         Ops Benchmarks
                     </Link>
                 </li>
                 <li>
                     <Link href={'/dashboard/feed'}>
-                        <RssIcon className='h-4 w-4 text-black' />
+                        <RssIcon className='h-4 w-4' />
                         Feed
                     </Link>
                 </li>
                 <li>
                     <Link href={'/dashboard/resource-hub'}>
-                        <UserGroupIcon className='h-4 w-4 text-black' />
+                        <UserGroupIcon className='h-4 w-4' />
                         Resource Hub
                     </Link>
                 </li>
                 <li>
                     <Link href={'/dashboard/automation-suite'}>
-                        <BoltIcon className='h-4 w-4 text-black' />
+                        <BoltIcon className='h-4 w-4' />
                         Automation Suite
                     </Link>
                 </li>
                 <li><Link href={'/dashboard/todos'}>
-                    <ClipboardDocumentCheckIcon className='h-4 w-4 text-black' />
+                    <ClipboardDocumentCheckIcon className='h-4 w-4' />
                     To-Do’s</Link></li>
             </ul>
             <div className='flex flex-col gap-6'>
                 <UserCard user={session?.user} pagetype={"Client"} />
                 <Link className='btn' href={'/dashboard/account'}>
-                    <Cog8ToothIcon className='h-4 w-4 text-black' />
+                    <Cog8ToothIcon className='h-4 w-4' />
                     Account setting</Link>
             </div>
         </section>

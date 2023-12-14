@@ -16,13 +16,13 @@ export default function Card({ user, pagetype }: Props) {
     //console.log(user)
 
     const greeting = user?.name ? (
-        <div className="flex flex-col items-start bg-white rounded-lg font-bold text-5xl text-black">
+        <div className="flex flex-col items-start font-bold text-5xl">
             <h6 className="text-lg">Hello {user?.name}!</h6>
         </div>
     ) : null
 
     const emailDisplay = user?.email ? (
-        <div className="flex flex-col items-start bg-white rounded-lg text-5xl text-black">
+        <div className="flex flex-col items-start text-5xl">
             <p className="text-sm">{user?.email}</p>
         </div>
     ) : null
