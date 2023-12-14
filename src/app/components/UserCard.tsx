@@ -3,7 +3,7 @@ import Image from "next/image"
 type User = {
     name?: string | null | undefined;
     email?: string | null | undefined;
-    image?: string | null | undefined;
+    // image?: string | null | undefined;
 } | undefined
 
 type Props = {
@@ -27,16 +27,16 @@ export default function Card({ user, pagetype }: Props) {
         </div>
     ) : null
 
-    const userImage = user?.image ? (
-        <Image
-            className="border-4 border-black dark:border-slate-500 drop-shadow-xl shadow-black rounded-full mx-auto mt-8"
-            src={user?.image}
-            width={200}
-            height={200}
-            alt={user?.name ?? "Profile Pic"}
-            priority={true}
-        />
-    ) : null
+    // const userImage = user?.image ? (
+    //     <Image
+    //         className="border-4 border-black dark:border-slate-500 drop-shadow-xl shadow-black rounded-full mx-auto mt-8"
+    //         src={user?.image}
+    //         width={200}
+    //         height={200}
+    //         alt={user?.name ?? "Profile Pic"}
+    //         priority={true}
+    //     />
+    // ) : null
 
     return (
         <section className="flex flex-col">
