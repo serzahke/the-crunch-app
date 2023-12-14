@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation'
 import UserCard from '../UserCard'
 import Link from 'next/link'
 
-import { ChartBarIcon, ClipboardDocumentCheckIcon, Cog8ToothIcon, RssIcon, UserGroupIcon, BoltIcon } from '@heroicons/react/24/outline'
+import { ChartBarIcon, ClipboardDocumentCheckIcon, Cog8ToothIcon, RssIcon, UserGroupIcon, BoltIcon, RectangleGroupIcon } from '@heroicons/react/24/outline'
 
 const Menu = ({ userCard }: any) => {
     const { data: session } = useSession({
@@ -19,6 +19,12 @@ const Menu = ({ userCard }: any) => {
     return (
         <section className="flex flex-col gap-10 justify-between">
             <ul className="menu bg-base-200 w-56 rounded-box">
+                <li>
+                    <Link href={'/dashboard'}>
+                        <RectangleGroupIcon className='h-4 w-4 text-black' />
+                        Dashboard
+                    </Link>
+                </li>
                 <li>
                     <Link href={'/dashboard/ops-benchmarks'}>
                         <ChartBarIcon className='h-4 w-4 text-black' />
