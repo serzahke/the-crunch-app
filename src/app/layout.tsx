@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar'
 import AuthProvider from './context/AuthProvider'
 import { ThemeProvider } from './context/ThemeProvider'
 import ClientThemeWrapper from './context/clientThemeWrapper'
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,6 +27,7 @@ export default function RootLayout({
               <Navbar />
               <main className="p-6" style={{minHeight: '100vh'}}>
                 {children}
+                <SpeedInsights />
               </main>
             </ClientThemeWrapper>
           </ThemeProvider>
