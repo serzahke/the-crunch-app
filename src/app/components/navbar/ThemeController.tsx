@@ -3,8 +3,8 @@
 import { ThemeContext } from '@app/app/context/ThemeProvider';
 import React, { useContext } from 'react';
 
-export default function App() {
-  const { changeTheme } = useContext(ThemeContext)
+const ThemeController = () => {
+  const { changeTheme }: any = useContext(ThemeContext)
 
   return (
     <>
@@ -29,3 +29,5 @@ export default function App() {
     </>
   );
 }
+
+export default ThemeController

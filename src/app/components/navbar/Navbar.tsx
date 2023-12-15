@@ -1,9 +1,8 @@
 import Link from "next/link"
-import SigninButton from "../navbar/SigninButton"
-import ThemeController from "../navbar/ThemeController"
-
 import Image from "next/image"
 import logo from "@app/assets/svg/Logo.svg"
+import ThemeController from "./ThemeController"
+import SigninButton from "./SigninButton"
 
 
 export default function Navbar() {
