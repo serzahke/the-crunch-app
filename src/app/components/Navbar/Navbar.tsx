@@ -4,7 +4,6 @@ import logo from "@app/assets/svg/Logo.svg"
 import ThemeController from "./ThemeController"
 import SigninButton from "./SigninButton"
 
-
 export default function Navbar() {
     return (
         <>
