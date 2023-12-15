@@ -3,7 +3,7 @@
 type User = {
     name?: string | null | undefined;
     email?: string | null | undefined;
-    // image?: string | null | undefined;
+    image?: string | null | undefined;
 } | undefined
 
 type Props = {
@@ -16,33 +16,37 @@ export default function Card({ user, pagetype }: Props) {
     //console.log(user)
 
     const greeting = user?.name ? (
-        <div className="flex flex-col items-start font-bold text-5xl">
+        <div className="flex flex-col items-center font-bold text-5xl">
             <h6 className="text-lg">Hello {user?.name}!</h6>
         </div>
     ) : null
 
     const emailDisplay = user?.email ? (
-        <div className="flex flex-col items-start text-5xl">
+        <div className="flex flex-col items-center text-5xl">
             <p className="text-sm">{user?.email}</p>
         </div>
     ) : null
 
-    // const userImage = user?.image ? (
-    //     <Image
-    //         className="border-4 border-black dark:border-slate-500 drop-shadow-xl shadow-black rounded-full mx-auto mt-8"
-    //         src={user?.image}
-    //         width={200}
-    //         height={200}
-    //         alt={user?.name ?? "Profile Pic"}
-    //         priority={true}
-    //     />
-    // ) : null
+    const userImage = user?.image ? (
+        <div className="bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 drop-shadow-xl shadow-black mx-auto mt-8 rounded-full p-1">
+        <img
+            className="rounded-full"
+            src={user?.image}
+            width={80}
+            height={80}
+            alt={user?.name ?? "Profile Pic"}
+        // priority={true}
+        />
+        </div>
+    ) : null
 
     return (
-        <section className="flex flex-col">
-            {greeting}
-            {emailDisplay}
-            {/* {userImage} */}
+        <section className="flex flex-col content-center gap-4">
+            {userImage}
+            <div>
+                {greeting}
+                {emailDisplay}
+            </div>
             {/* <p className="text-2xl text-center">{pagetype} Page!</p> */}
         </section>
     )
