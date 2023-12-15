@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Navbar from './components/Navbar/Navbar'
+import Navbar from './components/navbar/Navbar'
 import AuthProvider from './context/AuthProvider'
 import { ThemeProvider } from './context/ThemeProvider'
 import ClientThemeWrapper from './context/clientThemeWrapper'
