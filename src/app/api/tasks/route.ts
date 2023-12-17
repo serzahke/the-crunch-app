@@ -4,7 +4,7 @@ import { NextURL } from "next/dist/server/web/next-url";
 import { NextResponse } from "next/server";
 import { type NextRequest } from 'next/server'
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
     const { title, description, status, reporter, assigned, category, confirmedByOwner } = await request.json();
     await connectMongoDB();
     await Task.create({ title, description, status, reporter, assigned, category, confirmedByOwner });
@@ -17,7 +17,7 @@ export async function GET() {
     return NextResponse.json({ tasks });
 }
 
-export async function DELETE(request : Request) {
+export async function DELETE(request : NextRequest) {
     NextURL
     const id = request.nextUrl.searchParams.get("id");
     await connectMongoDB();
