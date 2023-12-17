@@ -1,6 +1,5 @@
 import connectMongoDB from "@app/libs/mongodb";
 import Task from "@app/models/task";
-import { NextURL } from "next/dist/server/web/next-url";
 import { NextResponse } from "next/server";
 import { type NextRequest } from 'next/server'
 
@@ -18,7 +17,6 @@ export async function GET() {
 }
 
 export async function DELETE(request : NextRequest) {
-    NextURL
     const id = request.nextUrl.searchParams.get("id");
     await connectMongoDB();
     await Task.findByIdAndDelete(id);
