@@ -9,7 +9,7 @@ const page = () => {
         <h1 className='text-2xl font-bold mt-2'>To do&apos;s</h1>
         <Link
           className='btn btn-primary'
-          href={`${process.env.HOST}/dashboard/todos/add`}
+          href={`/dashboard/todos/add`}
         >
           Add new task
         </Link>
