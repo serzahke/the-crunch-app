@@ -1,10 +1,10 @@
 import connectMongoDB from "@app/libs/mongodb";
 import Task from "@app/models/task";
-import { NextApiRequest } from "next";
 import { NextURL } from "next/dist/server/web/next-url";
 import { NextResponse } from "next/server";
+import { type NextRequest } from 'next/server'
 
-export async function POST(request: NextApiRequest) {
+export async function POST(request: NextRequest) {
     const { title, description, status, reporter, assigned, category, confirmedByOwner } = await request.json();
     await connectMongoDB();
     await Task.create({ title, description, status, reporter, assigned, category, confirmedByOwner });
