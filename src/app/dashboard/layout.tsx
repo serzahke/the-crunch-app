@@ -7,7 +7,7 @@ export default function DashboardLayout({ children } : any) {
             <div>
                 <Menu />
             </div>
-            <div>
+            <div className="w-full">
                 {children}
             </div>
         </div>
