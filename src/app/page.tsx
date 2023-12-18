@@ -1,22 +1,22 @@
-import { options } from "./api/auth/[...nextauth]/options"
+// import { options } from "./api/auth/[...nextauth]/options"
+import { authOptions } from "./api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next"
-import UserCard from "./components/UserCard"
 import Link from "next/link"
 import FeatureList from "./components/home/FeatureList"
+import LoginForm from "./components/LoginForm";
 
 export default async function Home() {
-  const session = await getServerSession(options)
+  const session = await getServerSession(authOptions)
 
   return (
     <>
       {session ? (
         <div className="flex flex-col gap-6">
-          {/* <UserCard user={session?.user} pagetype={"Home"} /> */}
           {pageContent}
         </div>
       ) : (
         <div className="flex flex-col gap-6">
-          {/* <h1 className="text-5xl">You Shall Not Pass!</h1> */}
+          {/* <LoginForm /> */}
           {pageContent}
         </div>
       )}

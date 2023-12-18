@@ -12,7 +12,7 @@ const SigninButton = () => {
     if (session && session.user) {
         return (
             <div className="dropdown dropdown-end">
-                <div tabIndex={0} role="button" className="btn btn-ghost m-1">{session.user.name}</div>
+                <div tabIndex={0} role="button" className="btn btn-ghost m-1">{session.user.email}</div>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                     <li>
                         <Link href={'/'}>
@@ -37,7 +37,8 @@ const SigninButton = () => {
 
     return (
         <div>
-            <button className='btn btn-ghost' onClick={() => signIn()}>Sign in</button>
+            {/* <button className='btn btn-ghost' onClick={() => signIn()}>Sign in</button> */}
+            <Link className='btn btn-ghost' href={'/signin'}>Sign in</Link>
         </div>
     )
 }
