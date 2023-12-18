@@ -4,7 +4,7 @@ var bcrypt = require('bcryptjs');
 import User from "@app/models/user";
 import connectMongoDB from "@app/libs/mongodb";
 
-export const authOptions: any = {
+const authOptions: any = {
     providers: [
         CredentialsProvider({
             name: "credentials",
