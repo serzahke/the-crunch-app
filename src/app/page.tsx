@@ -1,5 +1,5 @@
 // import { options } from "./api/auth/[...nextauth]/options"
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "@app/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next"
 import Link from "next/link"
 import FeatureList from "./components/home/FeatureList"
