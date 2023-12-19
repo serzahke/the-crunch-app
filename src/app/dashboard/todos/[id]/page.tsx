@@ -24,8 +24,8 @@ const page = async ({ params }: any) => {
   const { title, description, status, reporter, assigned, category, confirmedByOwner } = task;
 
   return (
-    <div>
-      <h1 className='text-2xl font-bold'>{title}</h1>
+    <div className='w-full'>
+      {/* <h1 className='text-2xl font-bold'>{title}</h1> */}
       <TaskFormEdit id={id} task={task} />
     </div>
   )
