@@ -46,7 +46,7 @@ const TaskFormEdit = ({ id, task }: any) => {
         <>
             <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
                 <div className="flex flex-row gap-6">
-                    <div className="flex flex-col w-full border border-inherit rounded-2xl p-4">
+                    <div className="flex flex-col w-full border border-base-200 rounded-2xl p-4">
                         <label className="form-control w-full">
                             <input
                                 type="text"
@@ -64,7 +64,8 @@ const TaskFormEdit = ({ id, task }: any) => {
                                 placeholder="Describe the issue"
                                 rows={5}
                                 className="
-                            textarea textarea-ghost w-full bg-slate-50
+                            textarea textarea-ghost w-full bg-base-200 dark: bg-base-200
+
                             focus-within:border-none focus-within:outline-none
                             "
                                 onChange={(e) => setNewDescription(e.target.value)}
@@ -72,7 +73,7 @@ const TaskFormEdit = ({ id, task }: any) => {
                             />
                         </label>
                     </div>
-                    <div className="flex flex-col min-w-[30%] border border-inherit rounded-2xl p-4">
+                    <div className="flex flex-col min-w-[30%] border border-base-200 rounded-2xl p-4">
                         <label className="form-control w-full max-w-md">
                             <div className="label">
                                 <span className="label-text">Status</span>
