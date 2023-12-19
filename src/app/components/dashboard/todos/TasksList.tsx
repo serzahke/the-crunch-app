@@ -57,8 +57,8 @@ const TasksList = async () => {
                 </div>
 
               </div>
-              <div className="card-actions justify-between mb-4">
-                <p className='text-sm'>{task.description.substr(0, 70)}...</p>
+              <div className="card-actions flex flex-col mb-4">
+                <p className='text-sm '>{task.description.substr(0, 70)}...</p>
                 <div className="badge badge-primary">{task.status}</div>
               </div>
               <div className='flex flex-col gap-4'>
