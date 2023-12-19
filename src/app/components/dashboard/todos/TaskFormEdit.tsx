@@ -135,7 +135,7 @@ const TaskFormEdit = ({ id, task }: any) => {
                                 <option value={newAssigned}>{newAssigned}</option>
                                 {
                                     users ? users.map((user: any) => (
-                                        <option value={user.username}>{user.username}</option>
+                                        <option key={user?._id} value={user?.username}>{user?.username}</option>
                                     )) : 'loading...'
                                 }
                             </select>
