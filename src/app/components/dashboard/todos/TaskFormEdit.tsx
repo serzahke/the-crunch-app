@@ -2,22 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-
-const getUsers = async () => {
-    try {
-        const res = await fetch(`/api/users`, {
-            cache: "no-store",
-        })
-
-        if (!res.ok) {
-            throw new Error("Failed to fetch users");
-        }
-
-        return res.json();
-    } catch (error) {
-        console.log("Error loading users: ", error)
-    }
-}
+import SelectUser from "./SelectUser"
 
 const TaskFormEdit = ({ id, task }: any) => {
     const [newTitle, setNewTitle] = useState(task.title)
@@ -28,16 +13,8 @@ const TaskFormEdit = ({ id, task }: any) => {
     const [newCategory, setNewCategory] = useState(task.category)
     const [newConfirmedByOwner, setNewConfirmedByOwner] = useState(task.confirmedByOwner)
 
-    const [users, setusers] = useState<any[]>()
 
     const router = useRouter();
-
-    const onLoadUsers = async (e: any) => {
-        const { users } = await getUsers()
-
-        console.log("__users", users)
-        setusers(users)
-    }
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -58,7 +35,8 @@ const TaskFormEdit = ({ id, task }: any) => {
             }
 
             router.refresh()
-            router.push('/dashboard/todos')
+            // router.push('/dashboard/todos')
+            location.reload();
         } catch (error) {
             console.log(error)
         }
@@ -84,7 +62,7 @@ const TaskFormEdit = ({ id, task }: any) => {
                         <label className="form-control w-full">
                             <textarea
                                 placeholder="Describe the issue"
-                                rows={1}
+                                rows={5}
                                 className="
                             textarea textarea-ghost w-full bg-slate-50
                             focus-within:border-none focus-within:outline-none
@@ -115,30 +93,13 @@ const TaskFormEdit = ({ id, task }: any) => {
                             <div className="label">
                                 <span className="label-text">Reporter</span>
                             </div>
-                            <input
-                                type="text"
-                                placeholder="Type here"
-                                className="input input-bordered w-full max-w-md"
-                                onChange={(e) => setNewReporter(e.target.value)}
-                                value={newReporter}
-                            />
+                            <SelectUser newProp={newReporter} setNewProp={setNewReporter} />
                         </label>
                         <label className="form-control w-full max-w-md">
                             <div className="label">
                                 <span className="label-text">Assigned</span>
                             </div>
-                            {/* <button className="btn" onClick={onLoadUsers}>users</button> */}
-                            <select className="select select-bordered w-full max-w-xs"
-                                onChange={(e) => setNewAssigned(e.target.value)}
-                                onClick={onLoadUsers}
-                            >
-                                <option value={newAssigned}>{newAssigned}</option>
-                                {
-                                    users ? users.map((user: any) => (
-                                        <option key={user?._id} value={user?.username}>{user?.username}</option>
-                                    )) : 'loading...'
-                                }
-                            </select>
+                            <SelectUser newProp={newAssigned} setNewProp={setNewAssigned} />
                         </label>
                         <label className="form-control w-full max-w-md">
                             <div className="label">
