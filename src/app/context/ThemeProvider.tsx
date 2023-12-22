@@ -1,22 +1,24 @@
 "use client"
 
-import { createContext, useState, useEffect, Children  } from "react";
+import { createContext, useState, useEffect, Children } from "react";
 
 export const ThemeContext = createContext({});
 
 
-export const ThemeProvider = ({children} : any) => {
+export const ThemeProvider = ({ children }: {
+    children: React.ReactNode
+}) => {
     const [theme, setTheme] = useState("light")
     const [isMounted, setIsMounted] = useState(false)
 
-    useEffect(() =>{
+    useEffect(() => {
         setIsMounted(true)
 
         const storedTheme = localStorage.getItem("theme") || "light";
         setTheme(storedTheme)
-    },[])
+    }, [])
 
-    if(!isMounted) {
+    if (!isMounted) {
         return <>Loading...</>
     }
 
@@ -26,7 +28,7 @@ export const ThemeProvider = ({children} : any) => {
     }
 
     return (
-        <ThemeContext.Provider value={{theme, changeTheme}}>
+        <ThemeContext.Provider value={{ theme, changeTheme }}>
             {children}
         </ThemeContext.Provider>
     )
