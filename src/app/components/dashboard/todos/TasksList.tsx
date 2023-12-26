@@ -46,11 +46,11 @@ const TasksList = async () => {
                     </li>
                     <div className='flex flex-col gap-2 p-4 '>
                       <div className='flex flex-row'>
-                        <span className='mr-1 text-neutral'>Reporter:</span>
+                        <span className='mr-1'>Reporter:</span>
                         <span className='font-medium'>{task.reporter}</span>
                       </div>
                       <div className='flex flex-row'>
-                        <span className='mr-1 text-neutral'>Category:</span>
+                        <span className='mr-1'>Category:</span>
                         <span className='font-medium'>{task.category}</span>
                       </div>
                     </div>

@@ -8,9 +8,9 @@ const TaskFormEdit = ({ id, task, categories, users }: any) => {
     const [newTitle, setNewTitle] = useState(task.title)
     const [newDescription, setNewDescription] = useState(task.description)
     const [newStatus, setNewStatus] = useState(task.status)
-    const [newReporter, setNewReporter] = useState(task.reporter)
-    const [newAssigned, setNewAssigned] = useState(task.assigned)
-    const [newCategory, setNewCategory] = useState(task.category)
+    const [newReporter, setNewReporter] = useState<any>(task.reporter)
+    const [newAssigned, setNewAssigned] = useState<any>(task.assigned)
+    const [newCategory, setNewCategory] = useState<any>(task.category)
     const [newConfirmedByOwner, setNewConfirmedByOwner] = useState(task.confirmedByOwner)
 
     const router = useRouter();
@@ -103,6 +103,8 @@ const TaskFormEdit = ({ id, task, categories, users }: any) => {
                                 defaultValue={{ label: newReporter }}
                                 onChange={setNewReporter}
                                 options={users}
+                                getOptionValue={(option: any) => option.username}
+                                getOptionLabel={(option: any) => option.username}
                             />
                         </label>
                         <label className="form-control w-full max-w-md">
@@ -113,6 +115,8 @@ const TaskFormEdit = ({ id, task, categories, users }: any) => {
                                 defaultValue={{ label: newAssigned }}
                                 onChange={setNewAssigned}
                                 options={users}
+                                getOptionValue={(option: any) => option.username}
+                                getOptionLabel={(option: any) => option.username}
                             />
                         </label>
                         <label className="form-control w-full max-w-md">

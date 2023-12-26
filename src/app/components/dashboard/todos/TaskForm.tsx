@@ -106,6 +106,8 @@ const TaskForm = ({ categories, users }: any) => {
                                 defaultValue={reporter}
                                 onChange={setReporter}
                                 options={users}
+                                getOptionValue={option => option.username}
+                                getOptionLabel={option => option.username}
                                 value={reporter}
                             />
                         </label>
@@ -118,6 +120,8 @@ const TaskForm = ({ categories, users }: any) => {
                                 defaultValue={assigned}
                                 onChange={setAssigned}
                                 options={users}
+                                getOptionValue={option => option.username}
+                                getOptionLabel={option => option.username}
                                 value={assigned}
                             />
                         </label>
