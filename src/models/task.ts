@@ -11,12 +11,24 @@ interface ITask {
     confirmedByOwner: boolean;
 }
 
+interface IReporterSchema {
+    username: string;
+}
+
 // 2. Create a Schema corresponding to the document interface.
+const reporterSchema = new Schema<IReporterSchema>({
+    username: { type: String, required: true },
+
+}, {
+    timestamps: true
+}
+);
+
 const taskSchema = new Schema<ITask>({
     title: { type: String, required: true },
     description: { type: String, required: true },
     status: { type: String },
-    reporter: { type: String },
+    reporter: { any: Schema.Types.Mixed },
     assigned: { type: String },
     category: { type: String },
     confirmedByOwner: { type: Boolean }
@@ -24,6 +36,7 @@ const taskSchema = new Schema<ITask>({
     timestamps: true
 }
 );
+
 mongoose.Promise = global.Promise;
 
 // 3. Create a Model.

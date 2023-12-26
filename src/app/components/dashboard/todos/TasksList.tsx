@@ -2,6 +2,7 @@ import { EllipsisHorizontalIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import React from 'react'
 import RemoveBtn from './RemoveBtn';
+import ProgressBar from './ProgressBar';
 
 const getTasks = async () => {
   try {
@@ -62,7 +63,8 @@ const TasksList = async () => {
                 <div className="badge badge-primary">{task.status}</div>
               </div>
               <div className='flex flex-col gap-4'>
-                <progress className="progress w-100" value="70" max="100"></progress>
+                {/* <progress className="progress w-100" value="70" max="100"></progress> */}
+                <ProgressBar statusProp={task.status} />
               </div>
             </div>
           </div>

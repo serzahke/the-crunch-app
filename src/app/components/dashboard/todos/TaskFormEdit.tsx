@@ -2,9 +2,9 @@
 
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import SelectUser from "./SelectUser"
+import Select from 'react-select';
 
-const TaskFormEdit = ({ id, task }: any) => {
+const TaskFormEdit = ({ id, task, categories, users }: any) => {
     const [newTitle, setNewTitle] = useState(task.title)
     const [newDescription, setNewDescription] = useState(task.description)
     const [newStatus, setNewStatus] = useState(task.status)
@@ -12,7 +12,6 @@ const TaskFormEdit = ({ id, task }: any) => {
     const [newAssigned, setNewAssigned] = useState(task.assigned)
     const [newCategory, setNewCategory] = useState(task.category)
     const [newConfirmedByOwner, setNewConfirmedByOwner] = useState(task.confirmedByOwner)
-
 
     const router = useRouter();
 
@@ -26,7 +25,15 @@ const TaskFormEdit = ({ id, task }: any) => {
                 headers: {
                     "Content-type": "application/json"
                 },
-                body: JSON.stringify({ newTitle, newDescription, newStatus, newReporter, newAssigned, newCategory, newConfirmedByOwner })
+                body: JSON.stringify({
+                    newTitle: newTitle,
+                    newDescription: newDescription,
+                    newStatus: newStatus,
+                    newReporter: newReporter?.label,
+                    newAssigned: newAssigned?.label,
+                    newCategory: newCategory?.label,
+                    newConfirmedByOwner: newConfirmedByOwner
+                })
             })
 
             if (!res.ok) {
@@ -35,7 +42,6 @@ const TaskFormEdit = ({ id, task }: any) => {
             }
 
             router.refresh()
-            // router.push('/dashboard/todos')
             location.reload();
         } catch (error) {
             console.log(error)
@@ -64,8 +70,7 @@ const TaskFormEdit = ({ id, task }: any) => {
                                 placeholder="Describe the issue"
                                 rows={5}
                                 className="
-                            textarea textarea-ghost w-full bg-base-200 dark: bg-base-200
-
+                            textarea textarea-ghost w-full bg-base-200
                             focus-within:border-none focus-within:outline-none
                             "
                                 onChange={(e) => setNewDescription(e.target.value)}
@@ -94,24 +99,30 @@ const TaskFormEdit = ({ id, task }: any) => {
                             <div className="label">
                                 <span className="label-text">Reporter</span>
                             </div>
-                            <SelectUser newProp={newReporter} setNewProp={setNewReporter} />
+                            <Select
+                                defaultValue={{ label: newReporter }}
+                                onChange={setNewReporter}
+                                options={users}
+                            />
                         </label>
                         <label className="form-control w-full max-w-md">
                             <div className="label">
                                 <span className="label-text">Assigned</span>
                             </div>
-                            <SelectUser newProp={newAssigned} setNewProp={setNewAssigned} />
+                            <Select
+                                defaultValue={{ label: newAssigned }}
+                                onChange={setNewAssigned}
+                                options={users}
+                            />
                         </label>
                         <label className="form-control w-full max-w-md">
                             <div className="label">
                                 <span className="label-text">Category</span>
                             </div>
-                            <input
-                                type="text"
-                                placeholder="Type here"
-                                className="input input-bordered w-full max-w-md"
-                                onChange={(e) => setNewCategory(e.target.value)}
-                                value={newCategory}
+                            <Select
+                                defaultValue={{ label: newCategory }}
+                                onChange={setNewCategory}
+                                options={categories}
                             />
                         </label>
                         <label className="form-control w-full max-w-md">
