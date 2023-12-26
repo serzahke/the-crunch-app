@@ -8,9 +8,9 @@ const TaskForm = ({ categories, users }: any) => {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [status, setStatus] = useState("")
-    const [reporter, setReporter] = useState("")
-    const [assigned, setAssigned] = useState("")
-    const [category, setCategory] = useState("")
+    const [reporter, setReporter] = useState<any>()
+    const [assigned, setAssigned] = useState<any>()
+    const [category, setCategory] = useState<any>()
     const [confirmedByOwner, setConfirmedByOwner] = useState(false)
 
     const router = useRouter();
