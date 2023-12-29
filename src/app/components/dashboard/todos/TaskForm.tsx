@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import Select from 'react-select';
 
-const TaskForm = ({ categories, users }: any) => {
+const TaskForm = ({ categories, users, statuses }: any) => {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
-    const [status, setStatus] = useState("")
+    const [status, setStatus] = useState<any>("")
     const [reporter, setReporter] = useState<any>()
     const [assigned, setAssigned] = useState<any>()
     const [category, setCategory] = useState<any>()
@@ -85,29 +85,21 @@ const TaskForm = ({ categories, users }: any) => {
                             <div className="label">
                                 <span className="label-text">Status</span>
                             </div>
-                            <select
-                                className="select select-bordered w-full max-w-md"
-                                onChange={(e) => setStatus(e.target.value)}
+                            <Select
+                                defaultValue={status}
+                                onChange={setStatus}
+                                options={statuses}
                                 value={status}
-                            >
-                                <option disabled selected>The situaton of task:</option>
-                                <option value={"backlog"}>Back log</option>
-                                <option value={"todo"}>Todo</option>
-                                <option value={"inprogress"}>In progress</option>
-                                <option value={"done"}>Done</option>
-                            </select>
+                            />
                         </label>
                         <label className="form-control w-full max-w-md">
                             <div className="label">
                                 <span className="label-text">Reporter</span>
                             </div>
-                            {/* <SelectUser Prop={reporter} setProp={setReporter} /> */}
                             <Select
                                 defaultValue={reporter}
                                 onChange={setReporter}
                                 options={users}
-                                getOptionValue={option => option.username}
-                                getOptionLabel={option => option.username}
                                 value={reporter}
                             />
                         </label>
@@ -115,13 +107,10 @@ const TaskForm = ({ categories, users }: any) => {
                             <div className="label">
                                 <span className="label-text">Assigned</span>
                             </div>
-                            {/* <SelectUser Prop={assigned} setProp={setAssigned} /> */}
                             <Select
                                 defaultValue={assigned}
                                 onChange={setAssigned}
                                 options={users}
-                                getOptionValue={option => option.username}
-                                getOptionLabel={option => option.username}
                                 value={assigned}
                             />
                         </label>

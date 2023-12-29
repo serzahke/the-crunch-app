@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import Select from 'react-select';
 
-const TaskFormEdit = ({ id, task, categories, users }: any) => {
+const TaskFormEdit = ({ id, task, categories, users, statuses }: any) => {
     const [newTitle, setNewTitle] = useState(task.title)
     const [newDescription, setNewDescription] = useState(task.description)
     const [newStatus, setNewStatus] = useState(task.status)
@@ -83,17 +83,11 @@ const TaskFormEdit = ({ id, task, categories, users }: any) => {
                             <div className="label">
                                 <span className="label-text">Status</span>
                             </div>
-                            <select
-                                className="select select-bordered w-full max-w-md"
-                                onChange={(e) => setNewStatus(e.target.value)}
-                                value={newStatus}
-                            >
-                                <option disabled selected>The situaton of task:</option>
-                                <option value={"backlog"}>Back log</option>
-                                <option value={"todo"}>Todo</option>
-                                <option value={"inprogress"}>In progress</option>
-                                <option value={"done"}>Done</option>
-                            </select>
+                            <Select
+                                defaultValue={{ label: newStatus }}
+                                onChange={setNewStatus}
+                                options={statuses}
+                            />
                         </label>
                         <label className="form-control w-full max-w-md">
                             <div className="label">
@@ -103,8 +97,6 @@ const TaskFormEdit = ({ id, task, categories, users }: any) => {
                                 defaultValue={{ label: newReporter }}
                                 onChange={setNewReporter}
                                 options={users}
-                                getOptionValue={(option: any) => option.username}
-                                getOptionLabel={(option: any) => option.username}
                             />
                         </label>
                         <label className="form-control w-full max-w-md">
@@ -115,8 +107,6 @@ const TaskFormEdit = ({ id, task, categories, users }: any) => {
                                 defaultValue={{ label: newAssigned }}
                                 onChange={setNewAssigned}
                                 options={users}
-                                getOptionValue={(option: any) => option.username}
-                                getOptionLabel={(option: any) => option.username}
                             />
                         </label>
                         <label className="form-control w-full max-w-md">
