@@ -4,7 +4,7 @@ import React from 'react'
 
 const getTaskById = async (id: any) => {
   try {
-    const res = await fetch(`${process.env.HOST}/api/tasks/${id}`, {
+    const res = await fetch(`${process.env.HOST}/api/todos/tasks/${id}`, {
       cache: "no-store"
     })
 
@@ -36,7 +36,7 @@ const getUsers = async () => {
 
 const getCategories = async () => {
   try {
-    const res = await fetch(`${process.env.HOST}/api/tasks/categories`, {
+    const res = await fetch(`${process.env.HOST}/api/todos/categories`, {
       cache: "no-store",
     })
 
@@ -52,7 +52,7 @@ const getCategories = async () => {
 
 const getStatuses = async () => {
   try {
-    const res = await fetch(`${process.env.HOST}/api/tasks/statuses`, {
+    const res = await fetch(`${process.env.HOST}/api/todos/statuses`, {
       cache: "no-store",
     })
 

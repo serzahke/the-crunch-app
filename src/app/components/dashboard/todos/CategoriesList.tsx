@@ -1,12 +1,12 @@
 import { EllipsisHorizontalIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import React from 'react'
-import RemoveBtn from './RemoveBtn';
+import RemoveBtnCategory from './RemoveBtnCategory';
 import moment from 'moment';
 
 const getCategories = async () => {
   try {
-    const res = await fetch(`${process.env.HOST}/api/tasks/categories`, {
+    const res = await fetch(`${process.env.HOST}/api/todos/categories`, {
       cache: "no-store",
     })
 
@@ -43,12 +43,12 @@ const CategoriesList = async () => {
                   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                     <div className='flex flex-col gap-2 p-4 '>
                       <div className='flex flex-col'>
-                        <span className='mr-1'>Created:</span>
+                        <span className='mr-1 text-xs text-gray-400 dark:text-gray-600'>Created:</span>
                         <span className='font-medium'>{moment(category.createdAt).format('DD-MMM-YYYY HH:mm:ss')}</span>
                       </div>
                     </div>
                     <li>
-                      <RemoveBtn id={category._id} />
+                      <RemoveBtnCategory id={category._id} />
                     </li>
                   </ul>
                 </div>

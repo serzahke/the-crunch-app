@@ -3,7 +3,7 @@ import React from 'react'
 
 const getCategoryById = async (id: any) => {
   try {
-    const res = await fetch(`${process.env.HOST}/api/tasks/categories/${id}`, {
+    const res = await fetch(`${process.env.HOST}/api/todos/categories/${id}`, {
       cache: "no-store"
     })
 

@@ -15,7 +15,7 @@ const CategoryFormEdit = ({ id, category }: any) => {
 
         try {
             console.log('id', id)
-            const res = await fetch(`/api/tasks/categories/${id}`, {
+            const res = await fetch(`/api/todos/categories/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-type": "application/json"

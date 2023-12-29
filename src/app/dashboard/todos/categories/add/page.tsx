@@ -2,7 +2,7 @@ import CategoryForm from "@app/app/components/dashboard/todos/CategoryForm";
 
 const getCategories = async () => {
   try {
-    const res = await fetch(`${process.env.HOST}/api/tasks/categories`, {
+    const res = await fetch(`${process.env.HOST}/api/todos/categories`, {
       cache: "no-store",
     })
 

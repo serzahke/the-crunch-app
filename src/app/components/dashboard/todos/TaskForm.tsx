@@ -24,7 +24,7 @@ const TaskForm = ({ categories, users, statuses }: any) => {
         }
 
         try {
-            const res = await fetch(`/api/tasks`, {
+            const res = await fetch(`/api/todos/tasks`, {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"
@@ -32,7 +32,7 @@ const TaskForm = ({ categories, users, statuses }: any) => {
                 body: JSON.stringify({
                     title: title,
                     description: description,
-                    status: status,
+                    status: status?.label,
                     reporter: reporter?.label,
                     assigned: assigned?.label,
                     category: category?.label,
@@ -41,7 +41,7 @@ const TaskForm = ({ categories, users, statuses }: any) => {
             })
 
             if (res.ok) {
-                router.push('/dashboard/todos')
+                router.push('/dashboard/todos/tasks')
             } else {
                 throw Error('Failed to create a task.')
             }
@@ -90,6 +90,15 @@ const TaskForm = ({ categories, users, statuses }: any) => {
                                 onChange={setStatus}
                                 options={statuses}
                                 value={status}
+                                unstyled
+                                classNames={{
+                                    control: (state) => state.isFocused ?
+                                    'input input-bordered input-primary rounded-lg w-full max-w-xs text-md px-2' :
+                                    'input input-bordered rounded-lg w-full max-w-xs text-md px-2',
+                                    menu: () => "p-4 dropdown-content z-[1] menu shadow bg-base-100 rounded-box w-52",
+                                    option: () => "btn btn-ghost text-lg font-normal text-left align-middle pt-2"
+                                    
+                                }}
                             />
                         </label>
                         <label className="form-control w-full max-w-md">
@@ -101,6 +110,15 @@ const TaskForm = ({ categories, users, statuses }: any) => {
                                 onChange={setReporter}
                                 options={users}
                                 value={reporter}
+                                unstyled
+                                classNames={{
+                                    control: (state) => state.isFocused ?
+                                    'input input-bordered input-primary rounded-lg w-full max-w-xs text-md px-2' :
+                                    'input input-bordered rounded-lg w-full max-w-xs text-md px-2',
+                                    menu: () => "p-4 dropdown-content z-[1] menu shadow bg-base-100 rounded-box w-52",
+                                    option: () => "btn btn-ghost text-lg font-normal text-left align-middle pt-2"
+                                    
+                                }}
                             />
                         </label>
                         <label className="form-control w-full max-w-md">
@@ -112,6 +130,15 @@ const TaskForm = ({ categories, users, statuses }: any) => {
                                 onChange={setAssigned}
                                 options={users}
                                 value={assigned}
+                                unstyled
+                                classNames={{
+                                    control: (state) => state.isFocused ?
+                                    'input input-bordered input-primary rounded-lg w-full max-w-xs text-md px-2' :
+                                    'input input-bordered rounded-lg w-full max-w-xs text-md px-2',
+                                    menu: () => "p-4 dropdown-content z-[1] menu shadow bg-base-100 rounded-box w-52",
+                                    option: () => "btn btn-ghost text-lg font-normal text-left align-middle pt-2"
+                                    
+                                }}
                             />
                         </label>
                         <label className="form-control w-full max-w-md">
@@ -123,6 +150,15 @@ const TaskForm = ({ categories, users, statuses }: any) => {
                                 onChange={setCategory}
                                 options={categories}
                                 value={category}
+                                unstyled
+                                classNames={{
+                                    control: (state) => state.isFocused ?
+                                    'input input-bordered input-primary rounded-lg w-full max-w-xs text-md px-2' :
+                                    'input input-bordered rounded-lg w-full max-w-xs text-md px-2',
+                                    menu: () => "p-4 dropdown-content z-[1] menu shadow bg-base-100 rounded-box w-52",
+                                    option: () => "btn btn-ghost text-lg font-normal text-left align-middle pt-2"
+                                    
+                                }}
                             />
                         </label>
                         <label className="form-control w-full max-w-md">

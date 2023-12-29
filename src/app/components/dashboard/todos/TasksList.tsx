@@ -1,13 +1,13 @@
 import { EllipsisHorizontalIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import React from 'react'
-import RemoveBtn from './RemoveBtn';
+import RemoveBtnTask from './RemoveBtnTask';
 import ProgressBar from './ProgressBar';
 import moment from 'moment';
 
 const getTasks = async () => {
   try {
-    const res = await fetch(`${process.env.HOST}/api/tasks`, {
+    const res = await fetch(`${process.env.HOST}/api/todos/tasks`, {
       cache: "no-store",
     })
 
@@ -44,20 +44,20 @@ const TasksList = async () => {
                   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                     <div className='flex flex-col gap-2 p-4 '>
                       <div className='flex flex-col'>
-                        <span className='mr-1'>Reporter:</span>
+                        <span className='mr-1 text-xs text-gray-400 dark:text-gray-600'>Reporter:</span>
                         <span className='font-medium'>{task.reporter}</span>
                       </div>
                       <div className='flex flex-col'>
-                        <span className='mr-1'>Category:</span>
+                        <span className='mr-1 text-xs text-gray-400 dark:text-gray-600'>Category:</span>
                         <span className='font-medium'>{task.category}</span>
                       </div>
                       <div className='flex flex-col'>
-                        <span className='mr-1'>Created:</span>
+                        <span className='mr-1 text-xs text-gray-400 dark:text-gray-600'>Created:</span>
                         <span className='font-medium'>{moment(task.createdAt).format('DD-MMM-YYYY HH:mm:ss')}</span>
                       </div>
                     </div>
                     <li>
-                      <RemoveBtn id={task._id} />
+                      <RemoveBtnTask id={task._id} />
                     </li>
                   </ul>
                 </div>

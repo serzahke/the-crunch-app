@@ -19,7 +19,7 @@ const CategoryForm = ({ categories, users, statuses }: any) => {
         }
 
         try {
-            const res = await fetch(`/api/tasks/categories`, {
+            const res = await fetch(`/api/todos/categories`, {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"

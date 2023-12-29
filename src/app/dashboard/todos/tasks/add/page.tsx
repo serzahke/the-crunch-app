@@ -2,7 +2,7 @@ import TaskForm from "@app/app/components/dashboard/todos/TaskForm"
 
 const getCategories = async () => {
   try {
-    const res = await fetch(`${process.env.HOST}/api/tasks/categories`, {
+    const res = await fetch(`${process.env.HOST}/api/todos/categories`, {
       cache: "no-store",
     })
 
@@ -34,7 +34,7 @@ const getUsers = async () => {
 
 const getStatuses = async () => {
   try {
-    const res = await fetch(`${process.env.HOST}/api/tasks/statuses`, {
+    const res = await fetch(`${process.env.HOST}/api/todos/statuses`, {
       cache: "no-store",
     })
 

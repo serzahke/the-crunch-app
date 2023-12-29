@@ -1,5 +1,6 @@
 "use client"
 
+import moment from "moment";
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import Select from 'react-select';
@@ -20,7 +21,7 @@ const TaskFormEdit = ({ id, task, categories, users, statuses }: any) => {
 
         try {
             console.log('id', id)
-            const res = await fetch(`/api/tasks/${id}`, {
+            const res = await fetch(`/api/todos/tasks/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-type": "application/json"
@@ -28,7 +29,7 @@ const TaskFormEdit = ({ id, task, categories, users, statuses }: any) => {
                 body: JSON.stringify({
                     newTitle: newTitle,
                     newDescription: newDescription,
-                    newStatus: newStatus,
+                    newStatus: newStatus?.label,
                     newReporter: newReporter?.label,
                     newAssigned: newAssigned?.label,
                     newCategory: newCategory?.label,
@@ -52,31 +53,43 @@ const TaskFormEdit = ({ id, task, categories, users, statuses }: any) => {
         <>
             <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
                 <div className="flex flex-row gap-6">
-                    <div className="flex flex-col w-full border border-base-200 rounded-2xl p-4">
-                        <label className="form-control w-full">
-                            <input
-                                type="text"
-                                placeholder="What's Task Title"
-                                className="
+                    <div className="flex flex-col w-full border border-base-200 rounded-2xl p-4 justify-between">
+                        <div>
+                            <label className="form-control w-full">
+                                <input
+                                    type="text"
+                                    placeholder="What's Task Title"
+                                    className="
                             input input-ghost w-full text-2xl font-bold
                             focus-within:border-none focus-within:outline-none
                             "
-                                onChange={(e) => setNewTitle(e.target.value)}
-                                value={newTitle}
-                            />
-                        </label>
-                        <label className="form-control w-full">
-                            <textarea
-                                placeholder="Describe the issue"
-                                rows={5}
-                                className="
+                                    onChange={(e) => setNewTitle(e.target.value)}
+                                    value={newTitle}
+                                />
+                            </label>
+                            <label className="form-control w-full">
+                                <textarea
+                                    placeholder="Describe the issue"
+                                    rows={5}
+                                    className="
                             textarea textarea-ghost w-full bg-base-200
                             focus-within:border-none focus-within:outline-none
                             "
-                                onChange={(e) => setNewDescription(e.target.value)}
-                                value={newDescription}
-                            />
-                        </label>
+                                    onChange={(e) => setNewDescription(e.target.value)}
+                                    value={newDescription}
+                                />
+                            </label>
+                        </div>
+                        <div className="flex flex-row gap-6">
+                            <div className="flex flex-row gap-2">
+                                <span className="text-xs text-gray-400 dark:text-gray-600">Updated:</span>
+                                <span className="text-xs">{moment(task.updatedAt).format('DD-MMM-YYYY HH:mm:ss')}</span>
+                            </div>
+                            <div className="flex flex-row gap-2">
+                                <span className="text-xs text-gray-400 dark:text-gray-600">Created:</span>
+                                <span className="text-xs">{moment(task.createdAt).format('DD-MMM-YYYY HH:mm:ss')}</span>
+                            </div>
+                        </div>
                     </div>
                     <div className="flex flex-col min-w-[30%] border border-base-200 rounded-2xl p-4">
                         <label className="form-control w-full max-w-md">
@@ -87,6 +100,15 @@ const TaskFormEdit = ({ id, task, categories, users, statuses }: any) => {
                                 defaultValue={{ label: newStatus }}
                                 onChange={setNewStatus}
                                 options={statuses}
+                                unstyled
+                                classNames={{
+                                    control: (state) => state.isFocused ?
+                                        'input input-bordered input-primary rounded-lg w-full max-w-xs text-md px-2' :
+                                        'input input-bordered rounded-lg w-full max-w-xs text-md px-2',
+                                    menu: () => "p-4 dropdown-content z-[1] menu shadow bg-base-100 rounded-box w-52",
+                                    option: () => "btn btn-ghost text-lg font-normal text-left align-middle pt-2"
+
+                                }}
                             />
                         </label>
                         <label className="form-control w-full max-w-md">
@@ -97,6 +119,15 @@ const TaskFormEdit = ({ id, task, categories, users, statuses }: any) => {
                                 defaultValue={{ label: newReporter }}
                                 onChange={setNewReporter}
                                 options={users}
+                                unstyled
+                                classNames={{
+                                    control: (state) => state.isFocused ?
+                                        'input input-bordered input-primary rounded-lg w-full max-w-xs text-md px-2' :
+                                        'input input-bordered rounded-lg w-full max-w-xs text-md px-2',
+                                    menu: () => "p-4 dropdown-content z-[1] menu shadow bg-base-100 rounded-box w-52",
+                                    option: () => "btn btn-ghost text-lg font-normal text-left align-middle pt-2"
+
+                                }}
                             />
                         </label>
                         <label className="form-control w-full max-w-md">
@@ -107,6 +138,15 @@ const TaskFormEdit = ({ id, task, categories, users, statuses }: any) => {
                                 defaultValue={{ label: newAssigned }}
                                 onChange={setNewAssigned}
                                 options={users}
+                                unstyled
+                                classNames={{
+                                    control: (state) => state.isFocused ?
+                                        'input input-bordered input-primary rounded-lg w-full max-w-xs text-md px-2' :
+                                        'input input-bordered rounded-lg w-full max-w-xs text-md px-2',
+                                    menu: () => "p-4 dropdown-content z-[1] menu shadow bg-base-100 rounded-box w-52",
+                                    option: () => "btn btn-ghost text-lg font-normal text-left align-middle pt-2"
+
+                                }}
                             />
                         </label>
                         <label className="form-control w-full max-w-md">
@@ -117,6 +157,15 @@ const TaskFormEdit = ({ id, task, categories, users, statuses }: any) => {
                                 defaultValue={{ label: newCategory }}
                                 onChange={setNewCategory}
                                 options={categories}
+                                unstyled
+                                classNames={{
+                                    control: (state) => state.isFocused ?
+                                        'input input-bordered input-primary rounded-lg w-full max-w-xs text-md px-2' :
+                                        'input input-bordered rounded-lg w-full max-w-xs text-md px-2',
+                                    menu: () => "p-4 dropdown-content z-[1] menu shadow bg-base-100 rounded-box w-52",
+                                    option: () => "btn btn-ghost text-lg font-normal text-left align-middle pt-2"
+
+                                }}
                             />
                         </label>
                         <label className="form-control w-full max-w-md">
