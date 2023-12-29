@@ -27,9 +27,9 @@ export async function POST(request: Request) {
     try {
         const data = await resend.emails.send({
             from: 'Crunch <onboarding@resend.dev>',
-            // to: [user.email],
             to: ['arman.kalhori@gmail.com'],
             subject: 'You hve new task',
+            text: '',
             react: EmailTemplate({ assigned: user.username, reporter: reporter }),
         });
 
