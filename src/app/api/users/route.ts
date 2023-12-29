@@ -13,7 +13,7 @@ export async function POST(request: Request) {
 export async function GET() {
     await connectMongoDB();
     // const users = await User.find();
-    const users = await User.find().select("username");
+    const users = await User.find().select(["username", "email"]);
     return NextResponse.json({ users });
 }
 
