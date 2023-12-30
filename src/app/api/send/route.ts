@@ -21,8 +21,9 @@ const getUserByUsername = async (username: any) => {
   }
 
 export async function POST(request: Request) {
-    const { reporter, assigned } = await request.json();
+    const { reporter, assigned, task } = await request.json();
     const { user } = await getUserByUsername(assigned)
+    
 
     try {
         const data = await resend.emails.send({
@@ -30,7 +31,7 @@ export async function POST(request: Request) {
             to: ['arman.kalhori@gmail.com'],
             subject: 'You hve new task',
             text: '',
-            react: EmailTemplate({ assigned: user.username, reporter: reporter }),
+            react: EmailTemplate({ assigned: user.username, reporter: reporter, task: task }),
         });
 
         return Response.json(data);

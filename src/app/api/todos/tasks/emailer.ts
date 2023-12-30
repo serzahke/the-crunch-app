@@ -1,4 +1,4 @@
-const emailer = async ({ reporter, assigned }: any) => {
+const emailer = async ({ reporter, assigned, task }: any) => {
     try {
         const res = await fetch(`${process.env.HOST}/api/send`, {
             method: "POST",
@@ -8,6 +8,7 @@ const emailer = async ({ reporter, assigned }: any) => {
             body: JSON.stringify({
                 reporter: reporter,
                 assigned: assigned,
+                task: task
             })
         })
 

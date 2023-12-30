@@ -7,8 +7,9 @@ import emailer from "./emailer";
 export async function POST(request: Request) {
     const { title, description, status, reporter, assigned, category, confirmedByOwner } = await request.json();
     await connectMongoDB();
-    await Task.create({ title, description, status, reporter, assigned, category, confirmedByOwner });
-    await emailer({ reporter, assigned })
+    const task = await Task.create({ title, description, status, reporter, assigned, category, confirmedByOwner });
+    console.log('task', task)
+    await emailer({ reporter, assigned, task })
     return NextResponse.json({ message: "Task Created" }, { status: 201 });
 }
 
