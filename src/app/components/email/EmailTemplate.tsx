@@ -14,8 +14,8 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
     <p>You have a new task from {reporter}.</p>
     <br></br>
     <p>Access the task via fast link:</p>
-    <a href={`${process.env.HOSTlink}/dashboard/todos/tasks/${task._id}`}>
-      {`${process.env.HOSTlink}/dashboard/todos/tasks/${task._id}`}
+    <a href={`${process.env.HOST}/dashboard/todos/tasks/${task._id}`}>
+      {`${process.env.HOST}/dashboard/todos/tasks/${task._id}`}
     </a>
   </div>
 );
