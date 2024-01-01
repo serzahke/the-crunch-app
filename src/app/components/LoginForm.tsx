@@ -4,19 +4,21 @@ import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [openPassword, setOpenPassword] = useState(false);
   const [error, setError] = useState("");
 
   const router = useRouter();
 
-  const handleSubmit = async (e : any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     try {
-      const res : any = await signIn("credentials", {
+      const res: any = await signIn("credentials", {
         email,
         password,
         redirect: false,
@@ -39,7 +41,7 @@ export default function LoginForm() {
         <h1 className="text-xl font-medium my-4">Sign in</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        <label className="form-control w-full">
+          <label className="form-control w-full">
             <div className="label">
               <span className="label-text">Email</span>
             </div>
@@ -54,12 +56,20 @@ export default function LoginForm() {
             <div className="label">
               <span className="label-text">Password</span>
             </div>
-            <input
-              type="password"
-              placeholder="Type here"
-              className="input input-bordered w-full"
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className="relative">
+              <input
+                type={openPassword == false ? "password" : "text"}
+                placeholder="Type here"
+                className="input input-bordered w-full"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className="absolute top-3 right-3 cursor-pointer" onClick={() => setOpenPassword(!openPassword)}>
+                {openPassword == false ?
+                  <EyeIcon className="h-6 w-6" /> :
+                  <EyeSlashIcon className="h-6 w-6 " />
+                }
+              </div>
+            </div>
           </label>
 
           <button type="submit" className="btn btn-primary w-full mt-4">

@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
 export default function RegisterForm() {
   const [username, setUserame] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [openPassword, setOpenPassword] = useState(false);
   const [error, setError] = useState("");
 
   const router = useRouter();
@@ -92,12 +94,20 @@ export default function RegisterForm() {
             <div className="label">
               <span className="label-text">Password</span>
             </div>
-            <input
-              type="password"
-              placeholder="Type here"
-              className="input input-bordered w-full"
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className="relative">
+              <input
+                type={openPassword == false ? "password" : "text"}
+                placeholder="Type here"
+                className="input input-bordered w-full"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className="absolute top-3 right-3 cursor-pointer" onClick={() => setOpenPassword(!openPassword)}>
+                {openPassword == false ?
+                  <EyeIcon className="h-6 w-6" /> :
+                  <EyeSlashIcon className="h-6 w-6 " />
+                }
+              </div>
+            </div>
           </label>
 
           <button type="submit" className="btn btn-primary w-full mt-4">

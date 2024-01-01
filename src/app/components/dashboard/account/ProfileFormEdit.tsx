@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { UploadButton, UploadDropzone } from "../../utils/uploadthing";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
 
 const ProfileFormEdit = ({ user }: any) => {
@@ -11,6 +12,7 @@ const ProfileFormEdit = ({ user }: any) => {
     const [newUsername, setNewUsername] = useState(user.username);
     const [newEmail, setNewEmail] = useState(user.email);
     const [newPassword, setNewPassword] = useState(user.password);
+    const [openPassword, setOpenPassword] = useState(false);
 
     console.log('user', user)
     console.log('user.username', user.username)
@@ -65,7 +67,7 @@ const ProfileFormEdit = ({ user }: any) => {
                 <div className="flex flex-row gap-6">
                     <div className="flex flex-col w-full border border-base-200 rounded-2xl p-4">
                         <main className="form-control w-full max-w-xs">
-                        <div className="label">
+                            <div className="label">
                                 <span className="label-text">Upload Your Avatar</span>
                             </div>
                             <UploadDropzone
@@ -110,12 +112,20 @@ const ProfileFormEdit = ({ user }: any) => {
                             <div className="label">
                                 <span className="label-text">Password</span>
                             </div>
-                            <input
-                                type="password"
-                                placeholder="Enter new Password"
-                                className="input input-bordered w-full max-w-xs"
-                                onChange={(e) => setNewPassword(e.target.value)}
-                            />
+                            <div className="relative">
+                                <input
+                                    type={openPassword == false ? "password" : "text"}
+                                    placeholder="Enter new Password"
+                                    className="input input-bordered w-full max-w-xs"
+                                    onChange={(e) => setNewPassword(e.target.value)}
+                                />
+                                <div className="absolute top-3 right-3 cursor-pointer" onClick={() => setOpenPassword(!openPassword)}>
+                                    {openPassword == false ?
+                                        <EyeIcon className="h-6 w-6"  /> :
+                                        <EyeSlashIcon className="h-6 w-6 "/>
+                                    }
+                                </div>
+                            </div>
                         </label>
 
                         <div className='w-full max-w-xs mt-4'>
