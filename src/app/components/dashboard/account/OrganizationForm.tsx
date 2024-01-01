@@ -9,7 +9,7 @@ import { BuildingStorefrontIcon } from "@heroicons/react/24/outline";
 const OrganizationForm = ({ user }: any) => {
     const { data: session }: any = useSession();
 
-    const [name, setName] = useState<any>(user.organization.name || null)
+    const [name, setName] = useState<any>(user?.organization?.name)
 
     const router = useRouter();
 
