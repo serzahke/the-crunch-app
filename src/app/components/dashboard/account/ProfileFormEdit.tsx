@@ -64,7 +64,7 @@ const ProfileFormEdit = ({ user }: any) => {
             <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
                 <div className="flex flex-row gap-6">
                     <div className="flex flex-col w-full border border-base-200 rounded-2xl p-4">
-                        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+                        <main className="w-full max-w-xs bg-gray-200 rounded-md items-center justify-between p-24">
                             <UploadButton
                                 endpoint="imageUploader"
                                 onClientUploadComplete={(res) => {
