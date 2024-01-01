@@ -12,11 +12,10 @@ const ProfileFormEdit = ({ user }: any) => {
 
     console.log('user', user)
     console.log('user.username', user.username)
-    // console.log('user.password', user.password)
 
     useEffect(() => {
         setNewEmail(session?.user?.email || '');
-        // setUsername(session?.user?.name || '');
+
     }, [session]);
 
     const router = useRouter();

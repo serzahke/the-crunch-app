@@ -53,7 +53,7 @@ const OrganizationForm = ({ user }: any) => {
                                 placeholder="Type here"
                                 className="input input-bordered w-full max-w-xs"
                                 onChange={(e) => setName(e.target.value)}
-                                value={name}
+                                defaultValue={name}
                             />
                         </label>
                         <div className='w-full max-w-xs mt-4'>
