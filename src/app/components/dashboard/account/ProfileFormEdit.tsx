@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { UploadButton } from "../../utils/uploadthing";
+import { UploadButton, UploadDropzone } from "../../utils/uploadthing";
 
 
 const ProfileFormEdit = ({ user }: any) => {
@@ -64,8 +64,12 @@ const ProfileFormEdit = ({ user }: any) => {
             <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
                 <div className="flex flex-row gap-6">
                     <div className="flex flex-col w-full border border-base-200 rounded-2xl p-4">
-                        <main className="w-full max-w-xs bg-gray-200 rounded-md items-center justify-between p-24">
-                            <UploadButton
+                        <main className="form-control w-full max-w-xs">
+                        <div className="label">
+                                <span className="label-text">Upload Your Avatar</span>
+                            </div>
+                            <UploadDropzone
+                                className="bg-slate-100 dark:bg-slate-600 dark:bg-opacity-10 dark:border-gray-600 ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300"
                                 endpoint="imageUploader"
                                 onClientUploadComplete={(res) => {
                                     // Do something with the response
