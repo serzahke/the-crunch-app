@@ -12,9 +12,8 @@ const ProfileFormEdit = ({ user }: any) => {
 
     console.log('user', user)
     console.log('user.username', user.username)
-    console.log('user.password', user.password)
+    // console.log('user.password', user.password)
 
-    console.log('session?.user?.name', session?.user?.username)
     useEffect(() => {
         setNewEmail(session?.user?.email || '');
         // setUsername(session?.user?.name || '');
