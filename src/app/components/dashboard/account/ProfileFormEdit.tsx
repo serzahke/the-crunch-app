@@ -14,9 +14,6 @@ const ProfileFormEdit = ({ user }: any) => {
     const [newPassword, setNewPassword] = useState(user.password);
     const [openPassword, setOpenPassword] = useState(false);
 
-    console.log('user', user)
-    console.log('user.username', user.username)
-
     useEffect(() => {
         setNewEmail(session?.user?.email || '');
 
@@ -30,7 +27,7 @@ const ProfileFormEdit = ({ user }: any) => {
             user: {
                 ...session?.user,
                 email: newEmail
-            }
+            },
         })
     }
 
@@ -45,6 +42,7 @@ const ProfileFormEdit = ({ user }: any) => {
                     "Content-type": "application/json",
                 },
                 body: JSON.stringify({
+                    newUsername: newUsername,
                     newEmail: newEmail,
                 }),
             });

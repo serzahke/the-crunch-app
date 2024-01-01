@@ -8,10 +8,21 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { ChartBarIcon, ClipboardDocumentCheckIcon, Cog8ToothIcon, RssIcon, UserGroupIcon, BoltIcon, RectangleGroupIcon } from '@heroicons/react/24/outline'
+import { useUserContext } from '@app/app/context/UserProvider'
+import { useEffect } from 'react'
 
 const Menu = ({ user }: any) => {
     const pathName = usePathname()
 
+    // UserContext custom hook
+    const {id, setId, username, setUsername, email, setEmail, avatar, setAvatar}: any = useUserContext()
+
+    useEffect(() => {
+        setUsername(user.username)
+        setEmail(user.email)
+        setAvatar(user.avatar)
+    }, [])
+    
     const { data: session } = useSession({
         required: true,
         onUnauthenticated() {
@@ -79,7 +90,7 @@ const Menu = ({ user }: any) => {
                 </li>
             </ul>
             <div className='flex flex-col gap-6'>
-                <UserCard user={session?.user} pagetype={"Client"} mainUser={user}/>
+                <UserCard />
                 <Link className='btn' href={'/dashboard/account'}>
                     <Cog8ToothIcon className='h-4 w-4' />
                     Account setting</Link>

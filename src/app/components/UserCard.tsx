@@ -1,3 +1,4 @@
+import { useUserContext } from "../context/UserProvider";
 import ProfilePlaceHolder from "./client/ProfilePlaceHolder";
 
 type User = {
@@ -6,50 +7,37 @@ type User = {
     image?: string | null | undefined;
 } | undefined
 
-type Props = {
-    user: User,
-    pagetype: string,
-    mainUser: string,
-}
 
-export default function Card({ user, pagetype, mainUser }: any) {
-    console.log('mainUser', mainUser)
+export default function Card() {
+    const {id, setId, username, setUsername, email, setEmail, avatar, setAvatar}: any = useUserContext()
 
-    const greeting = user?.name ? (
-        <div className="flex flex-col items-center font-bold text-5xl">
-            <h6 className="text-lg">Hello {user?.name}!</h6>
-        </div>
-    ) : null
-
-    const emailDisplay = user?.email ? (
+    const emailDisplay = email ? (
         <div className="flex flex-col items-center text-5xl">
-            <p className="text-sm">{user?.email}</p>
+            <p className="text-sm">{email}</p>
         </div>
     ) : null
 
-    const userImage = mainUser?.avatar ? (
+    const userImage = avatar ? (
         <div className="bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 drop-shadow-xl shadow-black mx-auto mt-8 rounded-full p-1">
             <img
                 className="rounded-full"
-                src={mainUser?.avatar}
+                src={avatar}
                 width={80}
                 height={80}
-                alt={user?.name ?? "Profile Pic"}
+                alt={username ?? "Profile Pic"}
             // priority={true}
             />
         </div>
     ) : (
-        <ProfilePlaceHolder user={user} type="firstChar" />
+        <ProfilePlaceHolder user={username} type="firstChar" />
     )
 
     return (
         <section className="flex flex-col content-center gap-4">
             {userImage}
             <div>
-                {greeting}
                 {emailDisplay}
             </div>
-            {/* <p className="text-2xl text-center">{pagetype} Page!</p> */}
         </section>
     )
 }
