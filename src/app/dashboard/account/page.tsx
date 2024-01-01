@@ -39,19 +39,19 @@ const getUser = async () => {
 }
 
 const page = async () => {
-  const { users }  = await getUsers();
-  const { user } = await getUser()
+  // const { users }  = await getUsers();
+  // const { user } = await getUser()
 
   // initialize users label and value for next TaskForm component
-  const usersArray = []
+  // const usersArray = []
 
-  for (let i = 0; i < users.length; i++) {
-    let user = {
-      _id:  users[i]._id,
-      label: users[i].username,
-      value: users[i].username
-    }
-    usersArray.push(user)
+  // for (let i = 0; i < users.length; i++) {
+  //   let user = {
+  //     _id:  users[i]._id,
+  //     label: users[i].username,
+  //     value: users[i].username
+  //   }
+  //   usersArray.push(user)
   }
 
   return (
@@ -59,8 +59,8 @@ const page = async () => {
       <div className='flex flex-row justify-between content-center mb-4'>
         <h1 className='text-2xl font-bold mt-2'>Account Setting</h1>
       </div>
-      <ProfileFormEdit user={user}/>
-      <OrganizationForm gottenUsers={usersArray} user={user}/>
+      {/* <ProfileFormEdit user={user}/>
+      <OrganizationForm gottenUsers={usersArray} user={user}/> */}
     </div>
   )
 }
