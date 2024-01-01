@@ -45,7 +45,7 @@ const OrganizationForm = ({ user }: any) => {
             <form onSubmit={handleSubmit} className='flex flex-row w-full gap-4 justify-center border border-base-200 rounded-2xl p-4'>
                 <div className="flex flex-col gap-4 max-w-md justify-center">
                     <div className="flex flex-row w-full justify-center">
-                        <BuildingStorefrontIcon className="w-40 text-gray-300" />
+                        <BuildingStorefrontIcon className="w-40 text-gray-300 dark:text-gray-700" />
                     </div>
                     <div>
                         <p className="text-xs">If You're an admin of organization, you can create a store and send invitations to your staffs. enjoy your crunching!</p>
