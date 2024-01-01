@@ -5,7 +5,6 @@ import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 var bcrypt = require('bcryptjs');
 
-
 export async function PUT(request: Request, { params }: any) {
     try {
         const id = new ObjectId(params);
@@ -14,10 +13,12 @@ export async function PUT(request: Request, { params }: any) {
             newEmail: email,
             newPassword: password,
             newOrganization: organization,
+            newAvatar: avatar,
         }: any = await request.json();
-        const hashedPassword = await bcrypt.hash(password, 10);
+        // const hashedPassword = await bcrypt.hash(password, 10);
         await connectMongoDB();
-        const user = await User.findByIdAndUpdate(id, { username, email, password: hashedPassword, organization });
+        const user = await User.findByIdAndUpdate(id, { username, email, password, organization, avatar });
+        console.log('user', user)
         return NextResponse.json({ message: "User Updated" }, { status: 200 })
     } catch (error) {
         return NextResponse.json(

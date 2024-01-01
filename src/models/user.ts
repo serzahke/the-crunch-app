@@ -6,6 +6,7 @@ interface IUser {
     email: string;
     password: string;
     organization: Types.ObjectId;
+    avatar: string;
 }
 
 // 2. Create a Schema corresponding to the document interface.
@@ -16,7 +17,8 @@ const userSchema = new Schema<IUser>({
     organization: {
         type: Schema.Types.ObjectId,
         ref: "Organization"
-    }
+    },
+    avatar: { type: String },
 }, {
     timestamps: true
 }
