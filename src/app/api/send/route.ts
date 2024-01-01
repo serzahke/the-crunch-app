@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const getUserByUsername = async (username: any) => {
     try {
-      const res = await fetch(`${process.env.HOST}/api/users/${username}`, {
+      const res = await fetch(`${process.env.HOST}/api/useByUsername/${username}`, {
         cache: "no-store"
       })
   

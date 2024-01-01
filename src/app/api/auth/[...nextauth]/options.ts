@@ -33,6 +33,22 @@ export const authOptions: any = {
             },
         }),
     ],
+    callbacks: {
+        session: ({ session, token } : any) => ({
+            ...session,
+            user: {
+              ...session.user,
+              id: token.sub,
+            },
+          }),
+
+        jwt: async ({ user, token, trigger, session }: any) => {
+            if( trigger === "update") {
+                return {...token, ...session.user}
+            }
+            return {...token, ...user}
+        },
+    },
     session: {
         strategy: "jwt",
     },
