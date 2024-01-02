@@ -13,8 +13,9 @@ export const EmailInviteUserByOrganization: React.FC<Readonly<EmailTemplateProps
     <p>You're invited to a project by' {invitedBy}.</p>
     <br></br>
     <p>Access the project via signing in crunch:</p>
-    <a href={`${process.env.HOST}/signin`}>
-      {`${process.env.HOST}/signin`}
+    <a className='btn btn-primary' href={`${process.env.HOST}/signup?organization=${invitedBy}`}>
+      {/* {`${process.env.HOST}/signup${invitedBy}`} */}
+      Confirm Invitation
     </a>
   </div>
 );

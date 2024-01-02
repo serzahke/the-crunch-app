@@ -29,7 +29,9 @@ const OrganizationContext = createContext<ContextProps>({
     invitedUser: '',
     setInvitedUser: (): string => '',
     users: [],
+    // users: [],
     setUsers: (): UserType[] => [],
+    // setUsers: (): UserType[] => [],
 })
 
 export const OrganizationContextProvider = ({ children }: {
@@ -39,6 +41,7 @@ export const OrganizationContextProvider = ({ children }: {
     const [name, setName] = useState('')
     const [invitedUser, setInvitedUser] = useState('')
     const [users, setUsers] = useState<[] | UserType[]>([])
+    // const [users, setUsers] = useState('')
 
     return (
         <OrganizationContext.Provider value={{ id, setId, name, setName, invitedUser, setInvitedUser, users, setUsers}}>

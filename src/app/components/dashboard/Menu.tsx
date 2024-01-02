@@ -15,14 +15,14 @@ const Menu = ({ user }: any) => {
     const pathName = usePathname()
 
     // UserContext custom hook
-    const {id, setId, username, setUsername, email, setEmail, avatar, setAvatar}: any = useUserContext()
+    const { id, setId, username, setUsername, email, setEmail, avatar, setAvatar }: any = useUserContext()
 
     useEffect(() => {
         setUsername(user.username)
         setEmail(user.email)
         setAvatar(user.avatar)
     }, [])
-    
+
     const { data: session } = useSession({
         required: true,
         onUnauthenticated() {
@@ -91,9 +91,31 @@ const Menu = ({ user }: any) => {
             </ul>
             <div className='flex flex-col gap-6'>
                 <UserCard />
-                <Link className='btn' href={'/dashboard/account'}>
+                {/* <Link className='btn' href={'/dashboard/account'}>
                     <Cog8ToothIcon className='h-4 w-4' />
-                    Account setting</Link>
+                    Account setting</Link> */}
+                <ul className="menu bg-base-200 w-56 rounded-box">
+                    <li>
+                        <details>
+                            <summary>
+                                <Cog8ToothIcon className='h-4 w-4' />
+                                Account setting
+                            </summary>
+                            <ul>
+                                <li>
+                                    <Link href={'/dashboard/account/profile'} className={pathName.endsWith("profile") ? "active" : ""}>
+                                        Profile
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href={'/dashboard/account/organization'} className={pathName.endsWith("organization") ? "active" : ""}>
+                                        Organization
+                                    </Link>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
             </div>
         </section>
     )
