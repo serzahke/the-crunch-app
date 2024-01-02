@@ -16,8 +16,8 @@ interface ContextProps {
     setName: Dispatch<SetStateAction<string>>,
     invitedUser: string
     setInvitedUser: Dispatch<SetStateAction<string>>
-    // users: UserType[]
-    // setUsers: Dispatch<SetStateAction<UserType[]>>
+    users: UserType[]
+    setUsers: Dispatch<SetStateAction<UserType[]>>
 
 }
 
@@ -28,8 +28,8 @@ const OrganizationContext = createContext<ContextProps>({
     setName: (): string => '',
     invitedUser: '',
     setInvitedUser: (): string => '',
-    // users: [],
-    // setUsers: (): UserType[] => [],
+    users: [],
+    setUsers: (): UserType[] => [],
 })
 
 export const OrganizationContextProvider = ({ children }: {
@@ -38,10 +38,10 @@ export const OrganizationContextProvider = ({ children }: {
     const [id, setId] = useState('')
     const [name, setName] = useState('')
     const [invitedUser, setInvitedUser] = useState('')
-    // const [users, setUsers] = useState<[] | UserType[]>([])
+    const [users, setUsers] = useState<[] | UserType[]>([])
 
     return (
-        <OrganizationContext.Provider value={{ id, setId, name, setName, invitedUser, setInvitedUser}}>
+        <OrganizationContext.Provider value={{ id, setId, name, setName, invitedUser, setInvitedUser, users, setUsers}}>
             {children}
         </OrganizationContext.Provider>
     )

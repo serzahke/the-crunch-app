@@ -6,15 +6,17 @@ import { useSession } from "next-auth/react";
 import { BuildingStorefrontIcon } from "@heroicons/react/24/outline";
 import { useOrganizationContext } from "@app/app/context/OrganizationProvider";
 
-const OrganizationForm = ({ user }: any) => {
-    const { id, setId, name, setName, invitedUser, setInvitedUser } = useOrganizationContext()
+const OrganizationForm = ({ user, invitedUsersByOrganizationId }: any) => {
+    const { id, setId, name, setName, invitedUser, setInvitedUser, users, setUsers } = useOrganizationContext()
     const { data: session }: any = useSession();
 
-    // const [name, setName] = useState<any>(user?.organization?.name)
+    console.log('invitedUsersByOrganizationId', invitedUsersByOrganizationId)
     useEffect(() => {
         setId(user?.organization?._id)
         setName(user?.organization?.name)
+        setUsers(invitedUsersByOrganizationId?.usersInvitedBy)
     }, [])
+    console.log('users', users)
 
     const router = useRouter();
 
@@ -121,6 +123,18 @@ const OrganizationForm = ({ user }: any) => {
                                 </div>
                             </div>
                         </form>
+                        {
+                            users.map((user) => (
+                                <div
+                                    key={user?._id}
+                                    className="card w-96 bg-base-100 shadow-xl hover:bg-base-300"
+                                >
+                                    <div className="card-body">
+                                        {user.email}
+                                    </div>
+                                </div>
+                            ))
+                        }
                     </div>
             }
 
