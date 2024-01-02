@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation"
 const InviteUserForm = () => {
     const { id, setId, name, setName, invitedUser, setInvitedUser, users, setUsers } = useOrganizationContext()
     
+    console.log('__name', name)
     const router = useRouter();
     
     const handleSubmitInvitedUser = async (e: any) => {

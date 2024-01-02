@@ -5,13 +5,14 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
-export default function RegisterForm() {
+export default function RegisterForm({ organizationId }: any) {
   const [username, setUserame] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [openPassword, setOpenPassword] = useState(false);
   const [error, setError] = useState("");
 
+  console.log('organizationId', organizationId)
   const router = useRouter();
 
   const handleSubmit = async (e: any) => {
@@ -23,7 +24,7 @@ export default function RegisterForm() {
     }
 
     try {
-      const resUserExists = await fetch("api/userExists", {
+      const resUserExists = await fetch("/api/users/userexist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,15 +39,17 @@ export default function RegisterForm() {
         return;
       }
 
-      const res = await fetch("api/users", {
+      const res = await fetch("/api/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username,
-          email,
-          password,
+          username: username,
+          email: email,
+          password: password,
+          authConfirmed: true,
+          organization: organizationId
         }),
       });
 

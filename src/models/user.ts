@@ -18,10 +18,10 @@ const userSchema = new Schema<IUser>({
     password: { type: String},
     avatar: { type: String },
     authConfirmed: { type: Boolean },
-    organization: {
+    organization: [{
         type: Schema.Types.ObjectId,
         ref: "Organization"
-    },
+    }],
     tasks: [{
         type: Schema.Types.ObjectId,
         ref: "Task"
