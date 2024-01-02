@@ -12,12 +12,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Invited User Created" }, { status: 201 });
 }
 
-// export async function GET() {
-//     await connectMongoDB();
-//     // const users = await User.find();
-//     const users = await User.find().select(["username", "email"]);
-//     return NextResponse.json({ users });
-// }
+export async function GET() {
+    await connectMongoDB();
+    const invitedUsers = await InvitedUser.find();
+    return NextResponse.json({ invitedUsers });
+}
 
 // export async function DELETE(request : NextRequest) {
 //     const id = request.nextUrl.searchParams.get("id");

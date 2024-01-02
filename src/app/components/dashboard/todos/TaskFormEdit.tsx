@@ -20,7 +20,6 @@ const TaskFormEdit = ({ id, task, categories, users, statuses }: any) => {
         e.preventDefault();
 
         try {
-            console.log('id', id)
             const res = await fetch(`/api/todos/tasks/${id}`, {
                 method: "PUT",
                 headers: {

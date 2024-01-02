@@ -8,16 +8,17 @@ import { useOrganizationContext } from "@app/app/context/OrganizationProvider";
 import UserInvitedList from "./UserInvitedList";
 import InviteUserForm from "./InviteUserForm";
 
-const OrganizationForm = ({ user, invitedUsersByOrganizationId }: any) => {
+const OrganizationFormEdit = ({ organization, invitedUsers }: any) => {
     const { id, setId, name, setName, invitedUser, setInvitedUser, users, setUsers } = useOrganizationContext()
     const { data: session }: any = useSession();
     const [error, setError] = useState("");
 
+    console.log('organization', organization)
 
     useEffect(() => {
-        setId(user?.organization?._id)
-        setName(user?.organization?.name)
-        setUsers(invitedUsersByOrganizationId?.usersInvitedBy)
+        setId(organization?._id)
+        setName(organization?.name)
+        setUsers(invitedUsers?.usersInvitedBy)
     }, [])
 
     const router = useRouter();
@@ -31,14 +32,13 @@ const OrganizationForm = ({ user, invitedUsersByOrganizationId }: any) => {
         }
 
         try {
-            const res = await fetch(`/api/organizations`, {
-                method: "POST",
+            const res = await fetch(`/api/organizations/${id}`, {
+                method: "PUT",
                 headers: {
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify({
-                    userId: session?.user?.id,
-                    name: name,
+                    newName: name,
                 })
             })
 
@@ -46,16 +46,17 @@ const OrganizationForm = ({ user, invitedUsersByOrganizationId }: any) => {
                 throw new Error('Failed to create a organization.')
             }
 
-            router.push('/dashboard/account/organization')
+            router.refresh()
+            location.reload();
         } catch (error) {
             console.log(error)
         }
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmitOrganization} className='flex flex-row w-full gap-4 justify-center border border-base-200 rounded-2xl p-4'>
-                <div className="flex flex-col gap-4 max-w-md justify-center">
+        <div className="flex flex-row gap-6">
+            <form onSubmit={handleSubmitOrganization} className='flex flex-col w-full gap-4 border border-base-200 rounded-2xl p-4'>
+                <div className="flex flex-col gap-4">
                     <div className="flex flex-row w-full justify-center">
                         <BuildingStorefrontIcon className="w-40 text-gray-300 dark:text-gray-700" />
                     </div>
@@ -74,8 +75,8 @@ const OrganizationForm = ({ user, invitedUsersByOrganizationId }: any) => {
                             defaultValue={name}
                         />
                     </label>
-                    
-                    <button type='submit' className='btn btn-primary flex w-full mt-4' >Create Organization</button>
+
+                    <button type='submit' className='btn btn-primary flex w-full mt-4' >Update Organization</button>
 
                     {error && (
                         <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
@@ -84,13 +85,12 @@ const OrganizationForm = ({ user, invitedUsersByOrganizationId }: any) => {
                     )}
                 </div>
             </form>
-            {/* <div className='flex flex-col w-full gap-4 border border-base-200 rounded-2xl p-4'>
-                <h2 className="text-2xl font-semibold">{name}</h2>
-                <InviteUserForm user={user} invitedUsersByOrganizationId={invitedUsersByOrganizationId} />
-                <UserInvitedList />
-            </div> */}
-        </>
+            <div className='flex flex-col w-full gap-4 border border-base-200 rounded-2xl p-4'>
+                <InviteUserForm />
+                <UserInvitedList invitedUsers={invitedUsers} />
+            </div>
+        </div>
     )
 }
 
-export default OrganizationForm
+export default OrganizationFormEdit

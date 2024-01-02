@@ -4,16 +4,9 @@ import React, { useEffect } from 'react'
 import { useRouter } from "next/navigation"
 
 
-const InviteUserForm = ({ user, invitedUsersByOrganizationId }: any) => {
+const InviteUserForm = () => {
     const { id, setId, name, setName, invitedUser, setInvitedUser, users, setUsers } = useOrganizationContext()
-    const { data: session }: any = useSession();
-
-    useEffect(() => {
-        setId(user?.organization?._id)
-        setName(user?.organization?.name)
-        setUsers(invitedUsersByOrganizationId?.usersInvitedBy)
-    }, [])
-
+    
     const router = useRouter();
     
     const handleSubmitInvitedUser = async (e: any) => {
@@ -46,15 +39,17 @@ const InviteUserForm = ({ user, invitedUsersByOrganizationId }: any) => {
         <>
             <form onSubmit={handleSubmitInvitedUser} >
                 <div className="flex flex-col gap-4 w-full">
+                <h4 className="text-2xl font-black my-2">{name} is Ready!</h4>
+
                     <div>
-                        <h4 className="text-xl">Share with others</h4>
+                        <h4 className="text-md my-2">Share You're Crunch project with others:</h4>
                         <label className="form-control">
-                            <div className="label">
+                            {/* <div className="label">
                                 <span className="label-text">email</span>
-                            </div>
+                            </div> */}
                             <input
                                 type="text"
-                                placeholder="Type here"
+                                placeholder="Enter your friend email"
                                 className="input input-bordered"
                                 onChange={(e) => setInvitedUser(e.target.value)}
                                 defaultValue={invitedUser}

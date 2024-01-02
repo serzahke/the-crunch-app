@@ -5,20 +5,27 @@ interface IUser {
     username: string;
     email: string;
     password: string;
-    organization: Types.ObjectId;
     avatar: string;
+    authConfirmed: boolean;
+    organization: Types.ObjectId;
+    tasks: Types.ObjectId;
 }
 
 // 2. Create a Schema corresponding to the document interface.
 const userSchema = new Schema<IUser>({
-    username: { type: String, required: true},
+    username: { type: String},
     email: { type: String, required: true},
-    password: { type: String, required: true },
+    password: { type: String},
+    avatar: { type: String },
+    authConfirmed: { type: Boolean },
     organization: {
         type: Schema.Types.ObjectId,
         ref: "Organization"
     },
-    avatar: { type: String },
+    tasks: [{
+        type: Schema.Types.ObjectId,
+        ref: "Task"
+    }],
 }, {
     timestamps: true
 }

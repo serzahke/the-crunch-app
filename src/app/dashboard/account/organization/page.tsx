@@ -1,6 +1,8 @@
 import OrganizationForm from '@app/app/components/dashboard/account/OrganizationForm'
-import ProfileFormEdit from '@app/app/components/dashboard/account/ProfileFormEdit'
+import OrganizationList from '@app/app/components/dashboard/account/OrganizationList'
+import TasksList from '@app/app/components/dashboard/todos/TasksList'
 import getMainUser from '@app/app/components/utils/getMainUser'
+import Link from 'next/link'
 import React from 'react'
 
 const getInvitedUsersByOrganizationId = async (id: any) => {
@@ -19,19 +21,32 @@ const getInvitedUsersByOrganizationId = async (id: any) => {
   }
 }
 
-const page = async () => {
-  const user = await getMainUser()
-  const invitedUsersByOrganizationId = await getInvitedUsersByOrganizationId(user?.organization?._id)
+const page = () => {
+  // const user = await getMainUser()
+  // const invitedUsersByOrganizationId = await getInvitedUsersByOrganizationId(user?.organization?._id)
 
   return (
     <div>
       <div className='flex flex-row justify-between content-center mb-4'>
-        <h1 className='text-2xl font-bold mt-2'>Account Setting</h1>
+        <h1 className='text-2xl font-bold mt-2'>Organization</h1>
+        <Link
+          className='btn btn-primary'
+          href={`/dashboard/account/organization/add`}
+        >
+          Add new Organization
+        </Link>
       </div>
-      <div className='flex flex-row w-full gap-6'>
-        <OrganizationForm user={await getMainUser()} invitedUsersByOrganizationId={invitedUsersByOrganizationId}/>
-      </div>
+      <OrganizationList />
+      {/* <TasksList /> */}
     </div>
+    // <div>
+    //   <div className='flex flex-row justify-between content-center mb-4'>
+    //     <h1 className='text-2xl font-bold mt-2'>Account Setting</h1>
+    //   </div>
+    //   <div className='flex flex-row w-full gap-6'>
+    //     <OrganizationForm user={await getMainUser()} invitedUsersByOrganizationId={invitedUsersByOrganizationId}/>
+    //   </div>
+    // </div>
   )
 }
 

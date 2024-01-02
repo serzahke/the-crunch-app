@@ -10,7 +10,6 @@ export async function PUT(request: Request, { params }: any) {
         newName: name,
     }: any = await request.json();
     await connectMongoDB();
-    console.log('___PUT')
     await Organization.findByIdAndUpdate(id, { name });
     return NextResponse.json({ message: "Organization Updated" }, { status: 200 })
 }

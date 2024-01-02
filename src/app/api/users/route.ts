@@ -5,10 +5,10 @@ import { type NextRequest } from 'next/server'
 var bcrypt = require('bcryptjs');
 
 export async function POST(request: Request) {
-    const { username, email, password, organization } = await request.json();
+    const { username, email, password, authConfirmed, organization } = await request.json();
     const hashedPassword = await bcrypt.hash(password, 10);
     await connectMongoDB();
-    await User.create({ username, email, password: hashedPassword, organization });
+    await User.create({ username, email, password: hashedPassword, authConfirmed, organization });
     return NextResponse.json({ message: "User Created" }, { status: 201 });
 }
 
@@ -19,9 +19,9 @@ export async function GET() {
     return NextResponse.json({ users });
 }
 
-export async function DELETE(request : NextRequest) {
+export async function DELETE(request: NextRequest) {
     const id = request.nextUrl.searchParams.get("id");
     await connectMongoDB();
     await User.findByIdAndDelete(id);
-    return NextResponse.json({ message: "User Deleted"}, { status: 200})
+    return NextResponse.json({ message: "User Deleted" }, { status: 200 })
 }

@@ -1,13 +1,11 @@
-import { useOrganizationContext } from "@app/app/context/OrganizationProvider"
+const UserInvitedList = ({ invitedUsers }: any) => {
+    // const { id, setId, name, setName, invitedUser, setInvitedUser, users, setUsers } = useOrganizationContext()
+    // console.log('users', users)
 
-const UserInvitedList = () => {
-    const { id, setId, name, setName, invitedUser, setInvitedUser, users, setUsers } = useOrganizationContext()
-    console.log('users', users)
-    
     return (
         <>
             {
-                users.map((user : any) => (
+                invitedUsers.map((user: any) => (
                     <div
                         key={user._id}
                         className="card w-full bg-base-100 shadow-xl hover:bg-base-300"

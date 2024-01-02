@@ -12,13 +12,16 @@ export async function PUT(request: Request, { params }: any) {
             newUsername: username,
             newEmail: email,
             newPassword: password,
-            newOrganization: organization,
             newAvatar: avatar,
+            newAuthConfirmed: authConfirmed,
+            newOrganization: organization,
+            newTasks: tasks
         }: any = await request.json();
+        
         // const hashedPassword = await bcrypt.hash(password, 10);
         await connectMongoDB();
-        const user = await User.findByIdAndUpdate(id, { username, email, password, organization, avatar });
-        console.log('user', user)
+        const user = await User.findByIdAndUpdate(id, { username, email, password, avatar, authConfirmed, organization, tasks }).populate({path: "organization", model: Organization});
+        console.log('__users.[id].rute', user)
         return NextResponse.json({ message: "User Updated" }, { status: 200 })
     } catch (error) {
         return NextResponse.json(
