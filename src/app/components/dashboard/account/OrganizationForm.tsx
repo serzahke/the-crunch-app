@@ -126,7 +126,7 @@ const OrganizationForm = ({ user, invitedUsersByOrganizationId }: any) => {
                         {
                             users.map((user) => (
                                 <div
-                                    key={user?._id}
+                                    key={user.id}
                                     className="card w-96 bg-base-100 shadow-xl hover:bg-base-300"
                                 >
                                     <div className="card-body">
