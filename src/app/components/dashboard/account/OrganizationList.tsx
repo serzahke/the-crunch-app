@@ -32,7 +32,7 @@ const OrganizationList = async () => {
           >
             <div className="card-body">
               <div className="card-actions justify-between">
-                <Link href={`/dashboard/account/organization/${organization._id}`}>
+                <Link href={`/dashboard/organization/${organization._id}`}>
                   <h5 className='font-medium'>{organization.name}</h5>
                 </Link>
               </div>

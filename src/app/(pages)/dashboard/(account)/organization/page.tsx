@@ -31,7 +31,7 @@ const page = () => {
         <h1 className='text-2xl font-bold mt-2'>Organization</h1>
         <Link
           className='btn btn-primary'
-          href={`/dashboard/account/organization/add`}
+          href={`/dashboard/organization/add`}
         >
           Add new Organization
         </Link>

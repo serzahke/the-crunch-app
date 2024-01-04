@@ -10,7 +10,7 @@ const page = () => {
                 <h1 className='text-2xl font-bold mt-2'>Categories</h1>
                 <Link
                     className='btn btn-primary'
-                    href={`/dashboard/todos/categories/add`}
+                    href={`/dashboard/categories/add`}
                 >
                     Add new Category
                 </Link>

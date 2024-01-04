@@ -34,7 +34,7 @@ const TasksList = async () => {
           >
             <div className="card-body">
               <div className="card-actions justify-between">
-                <Link href={`/dashboard/todos/tasks/${task._id}`}>
+                <Link href={`/dashboard/tasks/${task._id}`}>
                   <h5 className='font-medium'>{task.title}</h5>
                 </Link>
                 <div className="dropdown dropdown-hover">

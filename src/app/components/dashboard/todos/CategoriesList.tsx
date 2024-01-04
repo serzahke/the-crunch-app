@@ -33,7 +33,7 @@ const CategoriesList = async () => {
           >
             <div className="card-body">
               <div className="card-actions justify-between">
-                <Link href={`/dashboard/todos/categories/${category._id}`}>
+                <Link href={`/dashboard/categories/${category._id}`}>
                   <h5 className='font-medium'>{category.label}</h5>
                 </Link>
                 <div className="dropdown dropdown-hover">
