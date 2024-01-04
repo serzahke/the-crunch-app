@@ -6,7 +6,7 @@ const page = () => {
   return (
     <div>
       <div className='flex flex-row justify-between content-center mb-4'>
-        <h1 className='text-2xl font-bold mt-2'>Statuses</h1>
+        <h1 className='text-2xl font-bold mt-2'>Definitions</h1>
         <Link
           className='btn btn-primary'
           href={`/dashboard/todos/statuses/add`}

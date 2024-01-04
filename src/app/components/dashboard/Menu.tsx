@@ -71,18 +71,18 @@ const Menu = ({ user }: any) => {
                         </summary>
                         <ul>
                             <li>
-                                <Link href={'/dashboard/todos/tasks'} className={pathName.endsWith("tasks") ? "active" : ""}>
+                                <Link href={'/dashboard/tasks'} className={pathName.endsWith("tasks") ? "active" : ""}>
                                     Tasks
                                 </Link>
                             </li>
                             <li>
-                                <Link href={'/dashboard/todos/categories'} className={pathName.endsWith("categories") ? "active" : ""}>
+                                <Link href={'/dashboard/categories'} className={pathName.endsWith("categories") ? "active" : ""}>
                                     Categories
                                 </Link>
                             </li>
                             <li>
-                                <Link href={'/dashboard/todos/statuses'} className={pathName.endsWith("statuses") ? "active" : ""}>
-                                    Statuses
+                                <Link href={'/dashboard/definitions'} className={pathName.endsWith("statuses") ? "active" : ""}>
+                                    Definitions
                                 </Link>
                             </li>
                         </ul>
@@ -103,12 +103,12 @@ const Menu = ({ user }: any) => {
                             </summary>
                             <ul>
                                 <li>
-                                    <Link href={'/dashboard/account/profile'} className={pathName.endsWith("profile") ? "active" : ""}>
+                                    <Link href={'/dashboard/profile'} className={pathName.endsWith("profile") ? "active" : ""}>
                                         Profile
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href={'/dashboard/account/organization'} className={pathName.endsWith("organization") ? "active" : ""}>
+                                    <Link href={'/dashboard/organization'} className={pathName.endsWith("organization") ? "active" : ""}>
                                         Organization
                                     </Link>
                                 </li>
