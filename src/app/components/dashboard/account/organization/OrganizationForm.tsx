@@ -5,8 +5,6 @@ import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react";
 import { BuildingStorefrontIcon } from "@heroicons/react/24/outline";
 import { useOrganizationContext } from "@/context/OrganizationProvider";
-import UserInvitedList from "./UserInvitedList";
-import InviteUserForm from "./InviteUserForm";
 
 const OrganizationForm = ({ user, invitedUsersByOrganizationId }: any) => {
     const { id, setId, name, setName, invitedUser, setInvitedUser, users, setUsers } = useOrganizationContext()
@@ -46,7 +44,7 @@ const OrganizationForm = ({ user, invitedUsersByOrganizationId }: any) => {
                 throw new Error('Failed to create a organization.')
             }
 
-            router.push('/dashboard/account/organization')
+            router.push('/dashboard/organization')
         } catch (error) {
             console.log(error)
         }

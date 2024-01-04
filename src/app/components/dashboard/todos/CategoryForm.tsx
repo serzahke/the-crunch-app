@@ -31,7 +31,7 @@ const CategoryForm = ({ categories, users, statuses }: any) => {
             })
 
             if (res.ok) {
-                router.push('/dashboard/todos/categories')
+                router.push('/dashboard/categories')
             } else {
                 throw Error('Failed to create a category.')
             }

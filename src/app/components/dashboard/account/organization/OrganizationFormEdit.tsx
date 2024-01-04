@@ -5,8 +5,8 @@ import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react";
 import { BuildingStorefrontIcon } from "@heroicons/react/24/outline";
 import { useOrganizationContext } from "@/context/OrganizationProvider";
-import UserInvitedList from "./UserInvitedList";
-import InviteUserForm from "./InviteUserForm";
+import InviteUsersForm from "./InviteUsersForm";
+import InvitedUsersList from "./InvitedUsersList";
 
 const OrganizationFormEdit = ({ organization, invitedUsers }: any) => {
     const { id, setId, name, setName, invitedUser, setInvitedUser, users, setUsers } = useOrganizationContext()
@@ -86,8 +86,8 @@ const OrganizationFormEdit = ({ organization, invitedUsers }: any) => {
                 </div>
             </form>
             <div className='flex flex-col w-full gap-4 border border-base-200 rounded-2xl p-4'>
-                <InviteUserForm />
-                <UserInvitedList invitedUsers={invitedUsers} />
+                <InviteUsersForm />
+                <InvitedUsersList invitedUsers={invitedUsers} />
             </div>
         </div>
     )

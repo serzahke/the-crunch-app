@@ -1,4 +1,4 @@
-import OrganizationForm from "@/components/dashboard/account/OrganizationForm";
+import OrganizationForm from "@/components/dashboard/account/organization/OrganizationForm";
 import TaskForm from "@/components/dashboard/todos/TaskForm"
 import getMainUser from "@/components/utils/getMainUser";
 

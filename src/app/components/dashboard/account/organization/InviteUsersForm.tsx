@@ -4,24 +4,27 @@ import React, { useEffect } from 'react'
 import { useRouter } from "next/navigation"
 
 
-const InviteUserForm = () => {
+const InviteUsersForm = () => {
     const { id, setId, name, setName, invitedUser, setInvitedUser, users, setUsers } = useOrganizationContext()
-    
-    console.log('__name', name)
+
+    const { data: session }: any = useSession();
+
+    console.log('org id', id)
     const router = useRouter();
     
     const handleSubmitInvitedUser = async (e: any) => {
         e.preventDefault();
 
         try {
-            const res = await fetch(`/api/invitedusers`, {
+            const res = await fetch(`/api/users/invitedusers`, {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify({
-                    invitedBy: id,
+                    invitedBy: session?.user?.id,
                     email: invitedUser,
+                    organization: id
                 })
             })
 
@@ -66,4 +69,4 @@ const InviteUserForm = () => {
     )
 }
 
-export default InviteUserForm
+export default InviteUsersForm

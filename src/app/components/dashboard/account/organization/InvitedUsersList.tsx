@@ -1,4 +1,4 @@
-const UserInvitedList = ({ invitedUsers }: any) => {
+const InvitedUsersList = ({ invitedUsers }: any) => {
     // const { id, setId, name, setName, invitedUser, setInvitedUser, users, setUsers } = useOrganizationContext()
     // console.log('users', users)
 
@@ -21,4 +21,4 @@ const UserInvitedList = ({ invitedUsers }: any) => {
     )
 }
 
-export default UserInvitedList
+export default InvitedUsersList

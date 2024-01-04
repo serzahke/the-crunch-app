@@ -41,7 +41,7 @@ const TaskForm = ({ categories, users, statuses }: any) => {
             })
 
             if (res.ok) {
-                router.push('/dashboard/todos/tasks')
+                router.push('/dashboard/tasks')
             } else {
                 throw Error('Failed to create a task.')
             }

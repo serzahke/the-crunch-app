@@ -1,5 +1,5 @@
-import OrganizationForm from '@/components/dashboard/account/OrganizationForm'
-import OrganizationList from '@/components/dashboard/account/OrganizationList'
+import OrganizationForm from '@/components/dashboard/account/organization/OrganizationForm'
+import OrganizationList from '@/components/dashboard/account/organization/OrganizationList'
 import TasksList from '@/components/dashboard/todos/TasksList'
 import getMainUser from '@/components/utils/getMainUser'
 import Link from 'next/link'

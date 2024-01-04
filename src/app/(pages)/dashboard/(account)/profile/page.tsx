@@ -1,4 +1,4 @@
-import ProfileFormEdit from '@/components/dashboard/account/ProfileFormEdit'
+import ProfileFormEdit from '@/components/dashboard/account/profile/ProfileFormEdit'
 import getMainUser from '@/components/utils/getMainUser'
 import React from 'react'
 

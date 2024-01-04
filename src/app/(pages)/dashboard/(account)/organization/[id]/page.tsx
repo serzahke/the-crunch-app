@@ -1,5 +1,5 @@
-import OrganizationForm from '@/components/dashboard/account/OrganizationForm'
-import OrganizationFormEdit from '@/components/dashboard/account/OrganizationFormEdit'
+import OrganizationForm from '@/components/dashboard/account/organization/OrganizationForm'
+import OrganizationFormEdit from '@/components/dashboard/account/organization/OrganizationFormEdit'
 import getMainUser from '@/components/utils/getMainUser'
 import React from 'react'
 
@@ -19,9 +19,9 @@ const getOrganizationById = async (id: any) => {
   }
 }
 
-const getInvitedUsers = async () => {
+const getInvitedUsers = async (userId : any) => {
   try {
-    const res = await fetch(`${process.env.HOST}/api/invitedusers`, {
+    const res = await fetch(`${process.env.HOST}/api/users/invitedusers?id=${userId}`, {
       cache: "no-store"
     })
 
@@ -37,7 +37,7 @@ const getInvitedUsers = async () => {
 
 const page = async ({ params }: any) => {
   const user = await getMainUser()
-  const { invitedUsers } = await getInvitedUsers()
+  const { invitedUsers } = await getInvitedUsers(user._id)
   const { id } = params;
   const { organization } = await getOrganizationById(id)
 

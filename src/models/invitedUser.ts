@@ -4,6 +4,7 @@ import mongoose, { ObjectId, Schema, Types } from 'mongoose';
 interface IInvitedUser {
     email: string;
     invitedBy: Types.ObjectId;
+    organization: Types.ObjectId;
 }
 
 // 2. Create a Schema corresponding to the document interface.
@@ -11,8 +12,12 @@ const invitedUserSchema = new Schema<IInvitedUser>({
     email: { type: String, required: true},
     invitedBy: { 
         type: Schema.Types.ObjectId,
-        ref: "Organization"
+        ref: "User"
     },
+    organization: {
+        type: Schema.Types.ObjectId,
+        ref: "Organization"
+    }
 }, {
     timestamps: true
 }
