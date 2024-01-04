@@ -1,5 +1,5 @@
-import connectMongoDB from "@app/libs/mongodb";
-import InvitedUser from "@app/models/invitedUser";
+import connectMongoDB from "@/libs/mongodb";
+import InvitedUser from "@/models/invitedUser";
 import { NextResponse } from "next/server";
 import emailer from "./emailer";
 

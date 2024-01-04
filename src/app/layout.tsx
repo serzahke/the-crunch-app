@@ -1,14 +1,14 @@
-import './globals.css'
+import '@/styles/globals.css'
 import { Inter } from 'next/font/google'
-import Navbar from './components/navbar/Navbar'
-import AuthProvider from './context/AuthProvider'
-import { ThemeProvider } from './context/ThemeProvider'
-import ClientThemeWrapper from './context/clientThemeWrapper'
+import Navbar from '@/components/navbar/Navbar'
+import AuthProvider from '@/context/AuthProvider'
+import { ThemeProvider } from '@/context/ThemeProvider'
+import ClientThemeWrapper from '@/context/clientThemeWrapper'
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
-import { ourFileRouter } from './api/uploadthing/core'
+import { ourFileRouter } from '@/api/uploadthing/core'
 import "@uploadthing/react/styles.css";
 
 

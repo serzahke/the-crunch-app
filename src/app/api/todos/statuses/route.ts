@@ -1,5 +1,5 @@
-import connectMongoDB from "@app/libs/mongodb";
-import Status from "@app/models/status";
+import connectMongoDB from "@/libs/mongodb";
+import Status from "@/models/status";
 import { NextResponse } from "next/server";
 import { type NextRequest } from 'next/server'
 

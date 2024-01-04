@@ -1,4 +1,4 @@
-import { useOrganizationContext } from '@app/app/context/OrganizationProvider';
+import { useOrganizationContext } from '@/context/OrganizationProvider';
 import { useSession } from 'next-auth/react';
 import React, { useEffect } from 'react'
 import { useRouter } from "next/navigation"

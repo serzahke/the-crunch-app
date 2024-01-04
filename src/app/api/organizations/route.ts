@@ -1,6 +1,6 @@
-import connectMongoDB from "@app/libs/mongodb";
-import Organization from "@app/models/organization";
-import User from "@app/models/user";
+import connectMongoDB from "@/libs/mongodb";
+import Organization from "@/models/organization";
+import User from "@/models/user";
 import { NextResponse } from "next/server";
 import { type NextRequest } from 'next/server'
 

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react";
 import { BuildingStorefrontIcon } from "@heroicons/react/24/outline";
-import { useOrganizationContext } from "@app/app/context/OrganizationProvider";
+import { useOrganizationContext } from "@/context/OrganizationProvider";
 import UserInvitedList from "./UserInvitedList";
 import InviteUserForm from "./InviteUserForm";
 

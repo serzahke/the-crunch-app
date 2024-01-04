@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { ChartBarIcon, ClipboardDocumentCheckIcon, Cog8ToothIcon, RssIcon, UserGroupIcon, BoltIcon, RectangleGroupIcon } from '@heroicons/react/24/outline'
-import { useUserContext } from '@app/app/context/UserProvider'
+import { useUserContext } from '@/context/UserProvider'
 import { useEffect } from 'react'
 
 const Menu = ({ user }: any) => {

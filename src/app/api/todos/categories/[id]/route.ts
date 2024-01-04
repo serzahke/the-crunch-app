@@ -1,5 +1,5 @@
-import connectMongoDB from "@app/libs/mongodb";
-import Category from "@app/models/category";
+import connectMongoDB from "@/libs/mongodb";
+import Category from "@/models/category";
 import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 

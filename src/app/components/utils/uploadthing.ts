@@ -1,4 +1,4 @@
-import { OurFileRouter } from "@app/app/api/uploadthing/core";
+import { OurFileRouter } from "@/api/uploadthing/core";
 import { generateComponents } from "@uploadthing/react";
  
  

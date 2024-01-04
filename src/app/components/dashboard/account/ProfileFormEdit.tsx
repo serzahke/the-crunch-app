@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { UploadButton, UploadDropzone } from "../../utils/uploadthing";
+import { UploadButton, UploadDropzone } from "@/components/utils/uploadthing";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
 

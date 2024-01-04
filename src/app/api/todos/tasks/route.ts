@@ -1,5 +1,5 @@
-import connectMongoDB from "@app/libs/mongodb";
-import Task from "@app/models/task";
+import connectMongoDB from "@/libs/mongodb";
+import Task from "@/models/task";
 import { NextResponse } from "next/server";
 import { type NextRequest } from 'next/server'
 import emailer from "./emailer";

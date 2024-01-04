@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import logo from "@app/assets/svg/Logo.svg"
+import logo from "@/assets/svg/Logo.svg"
 import ThemeController from "./ThemeController"
 import SigninButton from "./SigninButton"
 

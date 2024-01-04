@@ -2,7 +2,7 @@
 
 import { getSession } from "next-auth/react";
 import { createContext, useState, Dispatch, SetStateAction, useContext, useEffect } from "react";
-import { authOptions } from "../api/auth/[...nextauth]/options";
+import { authOptions } from "@/api/auth/[...nextauth]/options";
 
 interface ContextProps {
     id: string,

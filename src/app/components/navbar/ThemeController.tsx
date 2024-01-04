@@ -1,6 +1,6 @@
 "use client"
 
-import { ThemeContext } from '@app/app/context/ThemeProvider';
+import { ThemeContext } from '@/context/ThemeProvider';
 import React, { useContext } from 'react';
 
 const ThemeController = () => {

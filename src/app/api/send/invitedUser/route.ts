@@ -1,5 +1,5 @@
 
-import { EmailInviteUserByOrganization } from '@app/app/components/email/EmailInviteUserByOrganization';
+import { EmailInviteUserByOrganization } from '@/components/email/EmailInviteUserByOrganization';
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);

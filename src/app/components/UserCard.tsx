@@ -1,5 +1,5 @@
-import { useUserContext } from "../context/UserProvider";
-import ProfilePlaceHolder from "./client/ProfilePlaceHolder";
+import { useUserContext } from "@/context/UserProvider";
+import ProfilePlaceHolder from "@/components/client/ProfilePlaceHolder";
 
 type User = {
     name?: string | null | undefined;
