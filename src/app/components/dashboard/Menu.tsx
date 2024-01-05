@@ -112,6 +112,11 @@ const Menu = ({ user }: any) => {
                                         Organization
                                     </Link>
                                 </li>
+                                <li>
+                                    <Link href={'/dashboard/tableau'} className={pathName.endsWith("tableau") ? "active" : ""}>
+                                        Tableau
+                                    </Link>
+                                </li>
                             </ul>
                         </details>
                     </li>

@@ -1,5 +1,6 @@
 import OrganizationForm from '@/components/dashboard/account/organization/OrganizationForm'
 import OrganizationList from '@/components/dashboard/account/organization/OrganizationList'
+import Tableau from '@/components/dashboard/account/tableau/tableau'
 import TasksList from '@/components/dashboard/todos/TasksList'
 import getMainUser from '@/components/utils/getMainUser'
 import Link from 'next/link'
@@ -37,7 +38,6 @@ const page = () => {
         </Link>
       </div>
       <OrganizationList />
-      {/* <TasksList /> */}
     </div>
     // <div>
     //   <div className='flex flex-row justify-between content-center mb-4'>
